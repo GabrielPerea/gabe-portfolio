@@ -16,7 +16,7 @@ const BORDER = "#e8e6e1";
 
 // ─── Data ────────────────────────────────────────────────────
 
-const caseStudies = [
+const agencyCaseStudies = [
   {
     tag: "Franchise · Retail",
     title: "Restructured a national retail franchise's paid search program",
@@ -76,6 +76,60 @@ const caseStudies = [
     results: [
       { metric: "60%", label: "Faster campaign deployment" },
       { metric: "50%", label: "QA workload reduction" },
+    ],
+  },
+];
+
+const consultingCaseStudies = [
+  {
+    tag: "SEO · Local Jewelry",
+    title: "Grew a custom jewelry brand from 10K to 100K+ monthly visitors",
+    challenge:
+      "A Santa Barbara jeweler had built steady traffic through blogging but needed a structured SEO and content strategy to break through the plateau at 10,000 monthly visitors.",
+    actions: [
+      "Conducted keyword research to identify high-intent jewelry comparison topics",
+      "Developed a content strategy centered on 'vs' comparison posts that captured search demand",
+      "Promoted content across social channels and built an email capture system with a free E-Book",
+      "Tracked analytics closely to double down on what was driving traffic and leads",
+    ],
+    results: [
+      { metric: "550%", label: "Traffic growth (2013-2017)" },
+      { metric: "300+", label: "Page 1 keyword rankings" },
+      { metric: "~50%", label: "Revenue now from web leads" },
+    ],
+  },
+  {
+    tag: "SEO · Local Services",
+    title: "Increased leads 25% for a 30-year-old dog boarding business",
+    challenge:
+      "A well-established dog boarding and daycare business had redesigned their site but had no analytics tracking and no SEO strategy in place. They needed more leads from search.",
+    actions: [
+      "Ran a full site audit and installed analytics tracking as a baseline",
+      "Performed keyword research and optimized on-page content and technical elements",
+      "Listed the business on 60+ quality directories through Yext partnership",
+      "Developed monthly blog content and added on-site elements like a review carousel",
+    ],
+    results: [
+      { metric: "25%", label: "Increase in daily leads" },
+      { metric: "60+", label: "Monthly website leads" },
+      { metric: "280", label: "Monthly calls from directories" },
+    ],
+  },
+  {
+    tag: "SEO · Commercial Services",
+    title: "Took a commercial refrigeration company from zero search traffic to steady lead flow",
+    challenge:
+      "After a site redesign, the business was receiving zero visits from search engines. The site's robots.txt was blocking all search engine crawlers, and the design wasn't mobile-responsive.",
+    actions: [
+      "Diagnosed the robots.txt file blocking all search engine bots from crawling the site",
+      "Replaced the existing theme with a custom responsive build, recreating the visual design",
+      "Built citations on 60+ business directories to establish presence in a new service area",
+      "Provided ongoing site monitoring, management, and malware removal",
+    ],
+    results: [
+      { metric: "0→Steady", label: "Search traffic recovery" },
+      { metric: "16", label: "New clients from search (Jan-Oct 2019)" },
+      { metric: "60+", label: "Directory listings created" },
     ],
   },
 ];
@@ -209,7 +263,7 @@ function SectionTitle({ children }) {
 function GPLogo({ size = 36 }) {
   return (
     <img
-      src="/logo.png"
+      src="/gabe-perea-logo-transparent-background.png"
       alt="GP Logo"
       style={{
         width: size,
@@ -805,8 +859,51 @@ export default function Portfolio() {
               marginBottom: 36,
             }}
           >
-            Real outcomes from real accounts. Client names anonymized by industry.
+            Real outcomes from real accounts across agency and independent consulting work.
           </p>
+        </FadeIn>
+
+        {/* Agency Work */}
+        <FadeIn>
+          <h3 style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: NAVY_LIGHT,
+            marginBottom: 16,
+            fontWeight: 600,
+            paddingBottom: 8,
+            borderBottom: `1px solid ${BORDER}`,
+          }}>Agency - Paid Search & Operations</h3>
+        </FadeIn>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 440px), 1fr))",
+            gap: 20,
+            marginBottom: 40,
+          }}
+        >
+          {agencyCaseStudies.map((study, i) => (
+            <CaseStudyCard key={`agency-${i}`} study={study} index={i} />
+          ))}
+        </div>
+
+        {/* Consulting Work */}
+        <FadeIn>
+          <h3 style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: NAVY_LIGHT,
+            marginBottom: 16,
+            fontWeight: 600,
+            paddingBottom: 8,
+            borderBottom: `1px solid ${BORDER}`,
+          }}>Independent Consulting - SEO & Web</h3>
         </FadeIn>
 
         <div
@@ -816,8 +913,8 @@ export default function Portfolio() {
             gap: 20,
           }}
         >
-          {caseStudies.map((study, i) => (
-            <CaseStudyCard key={i} study={study} index={i} />
+          {consultingCaseStudies.map((study, i) => (
+            <CaseStudyCard key={`consult-${i}`} study={study} index={i} />
           ))}
         </div>
       </section>
@@ -968,6 +1065,19 @@ export default function Portfolio() {
         >
           <FadeIn>
             <div>
+              <img
+                src="/gabriel-perea.jpg"
+                alt="Gabe Perea"
+                style={{
+                  width: "clamp(100px, 20vw, 140px)",
+                  height: "clamp(100px, 20vw, 140px)",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  marginBottom: 24,
+                  border: `3px solid ${BORDER}`,
+                }}
+              />
               <SectionLabel>About</SectionLabel>
               <h2
                 style={{
