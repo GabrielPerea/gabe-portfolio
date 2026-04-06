@@ -49,13 +49,15 @@ const agencyCaseStudies = [
   },
   {
     tag: "DTC · E-Commerce",
-    title: "Scaled two subscription brands through Google Ads and Meta optimization",
+    title: "Scaled two national subscription brands through Google Ads and Meta optimization",
     challenge:
-      "National subscription brands needed to grow online orders while improving unit economics across Search, PMax, Shopping, and Meta.",
+      "Two national subscription brands (wine and craft beer) needed to grow online orders while improving unit economics. The Google Ads account was running on tCPA with broad match keywords, limited negative keyword coverage, and product feeds that lacked keyword-optimized descriptions.",
     actions: [
-      "Managed and optimized Google Ads and Meta campaigns end-to-end",
-      "Advanced Merchant Center optimizations aligned with seasonal promotions",
-      "Improved product feed health and delivery timing",
+      "Switched bidding strategy from tCPA to tROAS, unlocking better optimization toward revenue-qualified conversions",
+      "Overhauled Merchant Center product feed hygiene - added keyword-rich descriptions, improved titles, and aligned feeds with seasonal promotions",
+      "Built out extensive negative keyword lists to eliminate wasteful spend and improve traffic quality",
+      "Adjusted bids across device, geo, audience, and dayparting dimensions based on performance data",
+      "Managed and optimized campaigns across Search, Performance Max, Shopping, and Meta end-to-end",
     ],
     results: [
       { metric: "134%", label: "Online order increase" },
@@ -586,6 +588,7 @@ export default function Portfolio() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
+          .hero-headshot { display: none !important; }
         }
         @media (min-width: 769px) {
           .mobile-toggle { display: none !important; }
@@ -727,7 +730,14 @@ export default function Portfolio() {
           margin: "0 auto",
         }}
       >
-        <div style={{ animation: "fadeUp 0.8s ease" }}>
+        <div style={{
+          animation: "fadeUp 0.8s ease",
+          display: "grid",
+          gridTemplateColumns: "1fr auto",
+          gap: "clamp(32px, 5vw, 60px)",
+          alignItems: "center",
+        }}>
+          <div>
           <div
             style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -810,6 +820,29 @@ export default function Portfolio() {
             >
               Get in Touch
             </button>
+          </div>
+          </div>
+
+          {/* Headshot */}
+          <div className="hero-headshot" style={{
+            width: "clamp(160px, 18vw, 220px)",
+            height: "clamp(160px, 18vw, 220px)",
+            borderRadius: "50%",
+            overflow: "hidden",
+            flexShrink: 0,
+            border: `4px solid ${BORDER}`,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+          }}>
+            <img
+              src="/gabriel-perea.jpg"
+              alt="Gabe Perea"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
           </div>
         </div>
       </section>
@@ -1065,19 +1098,6 @@ export default function Portfolio() {
         >
           <FadeIn>
             <div>
-              <img
-                src="/gabriel-perea.jpg"
-                alt="Gabe Perea"
-                style={{
-                  width: "clamp(100px, 20vw, 140px)",
-                  height: "clamp(100px, 20vw, 140px)",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                  marginBottom: 24,
-                  border: `3px solid ${BORDER}`,
-                }}
-              />
               <SectionLabel>About</SectionLabel>
               <h2
                 style={{
