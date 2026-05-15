@@ -6,7 +6,6 @@ const NAVY_DEEP = "#142d3e";
 const NAVY_LIGHT = "#2a5068";
 const GOLD = "#f5a623";
 const GOLD_LIGHT = "#fdf3e0";
-const GOLD_HOVER = "#e69710";
 const DARK = "#1a1a1a";
 const MEDIUM = "#4a4a4a";
 const LIGHT_TEXT = "#6b6b6b";
@@ -18,35 +17,90 @@ const BORDER = "#e8e6e1";
 
 const agencyCaseStudies = [
   {
-    tag: "Franchise · Retail",
-    title: "Restructured a national retail franchise's paid search program",
+    tag: "Franchise · Wireless Retail",
+    title: "Rebuilt paid media structure for a national wireless retail franchise",
     challenge:
-      "Inherited an underperforming account structure across a large franchise network with inconsistent campaign architecture and rising CPLs.",
+      "Inherited an underperforming account structure across a large wireless retail franchise network with inconsistent campaign architecture and rising CPLs.",
     actions: [
       "Designed and rolled out a new account structure across the full franchise network",
       "Rebuilt campaign segmentation, keyword architecture, and bidding strategy",
       "Aligned conversion tracking with actual business outcomes",
+      "Converted winning tests into repeatable performance marketing frameworks adopted department-wide",
     ],
     results: [
       { metric: "27%", label: "CPL reduction" },
       { metric: "107%", label: "Leads/location growth YoY" },
+      { metric: "22%", label: "Additional YoY lift the following quarter" },
     ],
   },
   {
-    tag: "Franchise · Healthcare",
-    title: "Rebuilt Search and PMax from scratch for a national chiropractic brand",
+    tag: "Franchise · Fitness",
+    title: "Launched paid media for a boutique fitness franchise from zero",
     challenge:
-      "Campaign structure lacked scalability and performance visibility. No PMax presence. Lead volume per clinic was stagnant.",
+      "A boutique fitness franchise had no paid media presence and needed to drive lead volume and new guest counts from scratch, in a category with notoriously high CPLs.",
     actions: [
-      "Rebuilt Search and Performance Max structure from the ground up",
-      "Launched a store-visit PMax test that expanded from one state to national markets",
-      "Implemented new measurement framework for per-clinic performance",
+      "Built campaign architecture, conversion tracking, and budget pacing from the ground up",
+      "Launched Search and PMax campaigns aligned with location-level performance",
+      "Iterated on creative, bidding, and audience strategy over the first 6 months",
+      "Established reporting framework to monitor location-level lead quality and volume",
     ],
     results: [
-      { metric: "23%", label: "Leads per clinic growth in 3 months" },
-      { metric: "1→National", label: "PMax market expansion" },
+      { metric: "67%", label: "Below industry CPL benchmark" },
+      { metric: "0→Scaling", label: "Lead volume and new guest counts growing MoM" },
     ],
   },
+  {
+    tag: "Franchise · Beauty",
+    title: "Sustained CPL improvements for a national beauty franchise under budget pressure",
+    challenge:
+      "A national beauty franchise faced declining budgets and a reduced location count. The team needed to defend and improve efficiency despite the constraints.",
+    actions: [
+      "Diagnosed structural inefficiencies and reallocated spend toward stronger performing geos and keywords",
+      "Refined bidding strategy and negative keyword coverage across the network",
+      "Tightened conversion tracking to ensure budgets followed real revenue signals",
+      "Maintained performance discipline through multiple consecutive quarters",
+    ],
+    results: [
+      { metric: "12%", label: "Q3 CPL improvement YoY" },
+      { metric: "16%", label: "Q4 CPL improvement YoY" },
+    ],
+  },
+  {
+    tag: "Diagnostic · Bing Ads",
+    title: "Resolved a conversion tracking failure across 400 Bing campaigns that had stumped prior attempts",
+    challenge:
+      "A national franchise's 400-campaign Bing account had a conversion tracking failure that broke tCPA optimization. Multiple prior escalation attempts had failed to resolve it. Budget pacing had collapsed to roughly 10% of target.",
+    actions: [
+      "Performed a deep diagnostic across the conversion tracking pipeline to isolate the root cause",
+      "Rebuilt the tracking implementation to restore reliable signal back to Bing",
+      "Re-enabled tCPA optimization across the 400-campaign account",
+      "Monitored recovery and adjusted pacing to scale safely back toward target",
+    ],
+    results: [
+      { metric: "10% → ~50%", label: "Monthly budget pacing recovered" },
+      { metric: "tCPA Restored", label: "Optimization capability re-enabled across 400 campaigns" },
+    ],
+  },
+  {
+    tag: "Operations · Automation",
+    title: "Engineered scalable campaign and QA systems for 800+ campaigns",
+    challenge:
+      "Manual campaign builds and QA across a massive franchise network created bottlenecks, errors, and inconsistent deployment standards.",
+    actions: [
+      "Built a custom Campaign Builder that auto-generates 100+ campaigns, keywords, and RSAs",
+      "Built a URL QA script that validates campaign-to-location mapping across hundreds of paid media campaigns",
+      "Built a budget recommendation calculator that auto-creates assigned tasks in Monday.com with a ready-to-send script for account managers",
+      "Created JavaScript, Make, and Google Sheets automation workflows for QA, pacing, and reporting",
+    ],
+    results: [
+      { metric: "60%", label: "Faster campaign deployment" },
+      { metric: "50%", label: "QA workload reduction" },
+      { metric: "800+", label: "Campaigns governed by automated tooling" },
+    ],
+  },
+];
+
+const consultingCaseStudies = [
   {
     tag: "DTC · E-Commerce",
     title: "Scaled two national subscription brands through Google Ads and Meta optimization",
@@ -54,7 +108,7 @@ const agencyCaseStudies = [
       "Two national subscription brands (wine and craft beer) needed to grow online orders while improving unit economics. The Google Ads account was running on tCPA with broad match keywords, limited negative keyword coverage, and product feeds that lacked keyword-optimized descriptions.",
     actions: [
       "Switched bidding strategy from tCPA to tROAS, unlocking better optimization toward revenue-qualified conversions",
-      "Overhauled Merchant Center product feed hygiene - added keyword-rich descriptions, improved titles, and aligned feeds with seasonal promotions",
+      "Overhauled Merchant Center product feed hygiene with keyword-rich descriptions and seasonal alignment",
       "Built out extensive negative keyword lists to eliminate wasteful spend and improve traffic quality",
       "Adjusted bids across device, geo, audience, and dayparting dimensions based on performance data",
       "Managed and optimized campaigns across Search, Performance Max, Shopping, and Meta end-to-end",
@@ -66,28 +120,10 @@ const agencyCaseStudies = [
     ],
   },
   {
-    tag: "Operations · Automation",
-    title: "Engineered scalable campaign and QA systems for 800+ campaigns",
-    challenge:
-      "Manual campaign builds and QA across a massive franchise network created bottlenecks, errors, and inconsistent deployment standards.",
-    actions: [
-      "Built a custom Campaign Builder that auto-generates 100+ campaigns, keywords, and RSAs",
-      "Created JavaScript, Make, and Google Sheets automation workflows for QA",
-      "Developed pacing, reporting, and optimization tooling for the full network",
-    ],
-    results: [
-      { metric: "60%", label: "Faster campaign deployment" },
-      { metric: "50%", label: "QA workload reduction" },
-    ],
-  },
-];
-
-const consultingCaseStudies = [
-  {
     tag: "SEO · Local Jewelry",
-    title: "Grew a custom jewelry brand from 10K to 100K+ monthly visitors",
+    title: "Grew a custom jewelry brand from 5K to 100K+ monthly visitors",
     challenge:
-      "A Santa Barbara jeweler had built steady traffic through blogging but needed a structured SEO and content strategy to break through the plateau at 10,000 monthly visitors.",
+      "A Santa Barbara jeweler had built steady traffic through blogging but needed a structured SEO and content strategy to break through the plateau.",
     actions: [
       "Conducted keyword research to identify high-intent jewelry comparison topics",
       "Developed a content strategy centered on 'vs' comparison posts that captured search demand",
@@ -95,10 +131,15 @@ const consultingCaseStudies = [
       "Tracked analytics closely to double down on what was driving traffic and leads",
     ],
     results: [
-      { metric: "550%", label: "Traffic growth (2013-2017)" },
+      { metric: "20x", label: "Traffic growth (5K → 100K+ monthly visitors)" },
       { metric: "300+", label: "Page 1 keyword rankings" },
-      { metric: "~50%", label: "Revenue now from web leads" },
+      { metric: "~50%", label: "Revenue now from web-driven leads" },
     ],
+    testimonial: {
+      quote:
+        "I used to get three to four sales a year off my website. Now, three to seven local people call me per week. Two to four people per week call me from out of town. My sales have been impacted greatly by these internet-driven clients. The sales from these calls vary from week to week but the total can be up to 50 percent of my business.",
+      attribution: "Calla Gold, Calla Gold Jewelry",
+    },
   },
   {
     tag: "SEO · Local Services",
@@ -136,30 +177,72 @@ const consultingCaseStudies = [
   },
 ];
 
+const analyses = [
+  {
+    tag: "Lift Study",
+    title: "Performance Max incrementality across a national chiropractic network",
+    description:
+      "A national chiropractic franchise tested Performance Max across a participating group of clinics versus a non-participating control. The analysis isolated PMax's incremental contribution by comparing test vs. control performance, checked for cannibalization by comparing Organic NDC growth across groups (similar rates ruled it out), and used YoY checks to confirm gains exceeded normal seasonality.",
+    findings: [
+      { metric: "+28%", label: "Net lift in Paid Search leads vs. control" },
+      { metric: "+17%", label: "Net lift in NDCs" },
+      { metric: "−9.5%", label: "CPL improvement beyond market trends" },
+    ],
+  },
+  {
+    tag: "Daypart Test",
+    title: "Sunday schedule restriction and account-wide budget density",
+    description:
+      "A national chiropractic franchise's Google Ads account was running 24-hour Sunday schedules. The test restricted Sundays to an 8 AM-4 PM window. The follow-up analysis revealed something larger than the daypart finding itself: the Google Ads algorithm reallocated the saved Sunday budget into more efficient weekday inventory, lifting overall account performance.",
+    findings: [
+      { metric: "25%", label: "Sunday CPL improvement" },
+      { metric: "+43%", label: "Increase in total monthly leads" },
+      { metric: "−27%", label: "Overall account CPL reduction" },
+    ],
+  },
+  {
+    tag: "Cross-Channel Correlation",
+    title: "Social activity correlates with measurable lift in Search performance",
+    description:
+      "Performance data across channels for a national franchise account revealed a consistent pattern between Social campaign activity and Search efficiency. In windows where Social was active, Search produced both more new customer leads and lower CPLs - the kind of holistic signal single-channel reporting tends to hide.",
+    findings: [
+      { metric: "+8%", label: "Increase in new customer leads during Social-active windows" },
+      { metric: "−6%", label: "Reduction in Search CPL during the same windows" },
+    ],
+  },
+];
+
 const tools = [
   "Google Ads",
   "Performance Max",
   "Microsoft Ads",
   "Meta Ads",
+  "LinkedIn Ads",
+  "Google Merchant Center",
   "GA4",
   "Google Tag Manager",
   "Looker Studio",
   "Optmyzr",
   "Make (Integromat)",
+  "Monday.com",
   "JavaScript (Ads Scripts)",
   "Google Sheets",
   "Ahrefs",
   "SEMrush",
   "Screaming Frog",
+  "Whitespark",
+  "Yext",
 ];
 
 const specialties = [
-  "Franchise Campaign Scaling",
-  "Multi-Location Strategy",
+  "Performance Marketing Strategy",
+  "Cross-Channel Media Planning",
+  "Franchise & Multi-Location Scaling",
+  "Marketing Automation",
   "Attribution Modeling",
-  "Offline Conversion Tracking",
   "Budget Forecasting",
   "A/B Testing Frameworks",
+  "Team Mentorship & Training",
 ];
 
 const career = [
@@ -171,7 +254,7 @@ const career = [
   },
   {
     period: "2020 – 2023",
-    role: "Digital Marketing Manager",
+    role: "Digital Marketing Manager (Contract)",
     company: "Gold Medal Wine Club & Craft Beer Club",
   },
   {
@@ -267,12 +350,7 @@ function GPLogo({ size = 36 }) {
     <img
       src="/gabe-perea-logo-transparent-background.png"
       alt="GP Logo"
-      style={{
-        width: size,
-        height: size,
-        objectFit: "contain",
-        borderRadius: 4,
-      }}
+      style={{ width: size, height: size, objectFit: "contain" }}
     />
   );
 }
@@ -313,7 +391,7 @@ function Stat({ number, label, delay }) {
 function CaseStudyCard({ study, index }) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <FadeIn delay={index * 0.1}>
+    <FadeIn delay={index * 0.08}>
       <div
         onClick={() => setExpanded(!expanded)}
         style={{
@@ -448,6 +526,44 @@ function CaseStudyCard({ study, index }) {
                 {a}
               </div>
             ))}
+
+            {study.testimonial && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "16px 20px",
+                  background: `${NAVY}06`,
+                  borderLeft: `3px solid ${GOLD}`,
+                  borderRadius: 4,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontStyle: "italic",
+                    fontSize: "0.95rem",
+                    color: DARK,
+                    lineHeight: 1.6,
+                    margin: "0 0 10px",
+                  }}
+                >
+                  "{study.testimonial.quote}"
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.78rem",
+                    color: NAVY,
+                    fontWeight: 600,
+                    margin: 0,
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  — {study.testimonial.attribution}
+                </p>
+              </div>
+            )}
+
             <div
               style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -502,7 +618,6 @@ function ProcessStep({ number, title, description, delay }) {
             color: NAVY,
             opacity: 0.04,
             lineHeight: 1,
-            fontWeight: 400,
           }}
         >
           {number}
@@ -538,7 +653,6 @@ function ProcessStep({ number, title, description, delay }) {
             color: MEDIUM,
             lineHeight: 1.6,
             margin: 0,
-            position: "relative",
           }}
         >
           {description}
@@ -567,14 +681,13 @@ export default function Portfolio() {
 
   const navItems = [
     { id: "work", label: "Work" },
-    { id: "process", label: "Process" },
+    { id: "insight", label: "Analysis" },
     { id: "tools", label: "Tools" },
     { id: "about", label: "About" },
   ];
 
   return (
     <div style={{ background: BG, minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
-      {/* ── Global Styles ─────────────────────────────────── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -584,7 +697,6 @@ export default function Portfolio() {
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         ::selection { background: ${NAVY}; color: ${GOLD}; }
 
-        /* Mobile menu */
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
@@ -621,7 +733,6 @@ export default function Portfolio() {
             height: 64,
           }}
         >
-          {/* Logo */}
           <div
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
@@ -633,7 +744,6 @@ export default function Portfolio() {
             </span>
           </div>
 
-          {/* Desktop nav */}
           <div className="desktop-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
             {navItems.map((item) => (
               <span
@@ -674,7 +784,6 @@ export default function Portfolio() {
             </span>
           </div>
 
-          {/* Mobile hamburger */}
           <div
             className="mobile-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -692,7 +801,6 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Mobile dropdown */}
         {mobileMenuOpen && (
           <div
             className="mobile-menu"
@@ -738,92 +846,89 @@ export default function Portfolio() {
           alignItems: "center",
         }}>
           <div>
-          <div
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "0.75rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: GOLD,
-              marginBottom: 16,
-              fontWeight: 600,
-            }}
-          >
-            Senior Paid Search Strategist
-          </div>
-          <h1
-            style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)",
-              color: NAVY,
-              lineHeight: 1.12,
-              maxWidth: 720,
-              fontWeight: 400,
-              letterSpacing: "-0.02em",
-              marginBottom: 20,
-            }}
-          >
-            I turn paid search into
-            <span style={{ color: GOLD }}> scalable systems</span> that drive
-            measurable growth.
-          </h1>
-          <p
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
-              color: MEDIUM,
-              lineHeight: 1.65,
-              maxWidth: 560,
-              marginBottom: 32,
-            }}
-          >
-            10+ years building, optimizing, and scaling paid search programs for
-            franchise networks, national brands, and DTC e-commerce. $1M+ in
-            monthly ad spend. Systems that last.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button
-              onClick={() => scrollTo("work")}
+            <div
               style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.88rem",
-                fontWeight: 500,
-                background: NAVY,
-                color: "white",
-                border: "none",
-                padding: "12px 28px",
-                borderRadius: 6,
-                cursor: "pointer",
-                transition: "background 0.2s",
+                fontSize: "0.75rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: GOLD,
+                marginBottom: 16,
+                fontWeight: 600,
               }}
-              onMouseEnter={(e) => (e.target.style.background = NAVY_DEEP)}
-              onMouseLeave={(e) => (e.target.style.background = NAVY)}
             >
-              View Case Studies
-            </button>
-            <button
-              onClick={() => scrollTo("contact")}
+              Senior Performance Marketing Strategist
+            </div>
+            <h1
               style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.88rem",
-                fontWeight: 500,
-                background: "transparent",
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)",
                 color: NAVY,
-                border: `1px solid ${BORDER}`,
-                padding: "12px 28px",
-                borderRadius: 6,
-                cursor: "pointer",
-                transition: "border-color 0.2s",
+                lineHeight: 1.12,
+                maxWidth: 720,
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+                marginBottom: 20,
               }}
-              onMouseEnter={(e) => (e.target.style.borderColor = NAVY)}
-              onMouseLeave={(e) => (e.target.style.borderColor = BORDER)}
             >
-              Get in Touch
-            </button>
-          </div>
+              Paid media strategy, campaign operations, and marketing automation.
+            </h1>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
+                color: MEDIUM,
+                lineHeight: 1.65,
+                maxWidth: 560,
+                marginBottom: 32,
+              }}
+            >
+              10+ years working with franchise networks, national brands, and
+              DTC e-commerce. $1M+ in monthly ad spend managed since 2020.
+              Based in Santa Barbara, CA.
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <button
+                onClick={() => scrollTo("work")}
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.88rem",
+                  fontWeight: 500,
+                  background: NAVY,
+                  color: "white",
+                  border: "none",
+                  padding: "12px 28px",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.target.style.background = NAVY_DEEP)}
+                onMouseLeave={(e) => (e.target.style.background = NAVY)}
+              >
+                View Case Studies
+              </button>
+              <button
+                onClick={() => scrollTo("contact")}
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.88rem",
+                  fontWeight: 500,
+                  background: "transparent",
+                  color: NAVY,
+                  border: `1px solid ${BORDER}`,
+                  padding: "12px 28px",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                  transition: "border-color 0.2s",
+                }}
+                onMouseEnter={(e) => (e.target.style.borderColor = NAVY)}
+                onMouseLeave={(e) => (e.target.style.borderColor = BORDER)}
+              >
+                Contact
+              </button>
+            </div>
           </div>
 
-          {/* Headshot */}
           <div className="hero-headshot" style={{
             width: "clamp(160px, 18vw, 220px)",
             height: "clamp(160px, 18vw, 220px)",
@@ -865,8 +970,8 @@ export default function Portfolio() {
         >
           <Stat number="$1M+" label="Monthly Ad Spend" delay={0} />
           <Stat number="800+" label="Active Campaigns" delay={0.1} />
-          <Stat number="10+" label="Years Experience" delay={0.2} />
-          <Stat number="107%" label="Best Leads/Location Growth" delay={0.3} />
+          <Stat number="67%" label="Best CPL vs. Benchmark" delay={0.2} />
+          <Stat number="10+" label="Years Experience" delay={0.3} />
         </div>
       </section>
 
@@ -887,16 +992,15 @@ export default function Portfolio() {
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.92rem",
               color: LIGHT_TEXT,
-              maxWidth: 500,
+              maxWidth: 680,
               lineHeight: 1.6,
               marginBottom: 36,
             }}
           >
-            Real outcomes from real accounts across agency and independent consulting work.
+            A selection of work across agency and independent consulting. Clients anonymized.
           </p>
         </FadeIn>
 
-        {/* Agency Work */}
         <FadeIn>
           <h3 style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -908,7 +1012,7 @@ export default function Portfolio() {
             fontWeight: 600,
             paddingBottom: 8,
             borderBottom: `1px solid ${BORDER}`,
-          }}>Agency - Paid Search & Operations</h3>
+          }}>Agency — Paid Search & Operations</h3>
         </FadeIn>
 
         <div
@@ -924,7 +1028,6 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Consulting Work */}
         <FadeIn>
           <h3 style={{
             fontFamily: "'DM Sans', sans-serif",
@@ -936,7 +1039,7 @@ export default function Portfolio() {
             fontWeight: 600,
             paddingBottom: 8,
             borderBottom: `1px solid ${BORDER}`,
-          }}>Independent Consulting - SEO & Web</h3>
+          }}>Independent Consulting — DTC, SEO & Web</h3>
         </FadeIn>
 
         <div
@@ -952,47 +1055,157 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* ── Process ───────────────────────────────────────── */}
+      {/* ── Analysis ──────────────────────────────────────── */}
       <section
-        id="process"
+        id="insight"
         style={{
           padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px)",
-          background: CARD_BG,
-          borderTop: `1px solid ${BORDER}`,
-          borderBottom: `1px solid ${BORDER}`,
+          background: `linear-gradient(135deg, ${NAVY_DEEP} 0%, ${NAVY} 100%)`,
+          color: "white",
         }}
       >
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeIn>
-            <SectionLabel>How I Work</SectionLabel>
-            <SectionTitle>Diagnose. Design. Scale.</SectionTitle>
+            <div
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.7rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: GOLD,
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              Analysis
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
+                color: "white",
+                fontWeight: 400,
+                marginBottom: 12,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Studies and investigations
+            </h2>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.92rem",
+                color: "rgba(255,255,255,0.7)",
+                maxWidth: 680,
+                lineHeight: 1.6,
+                marginBottom: 36,
+              }}
+            >
+              Tests and analyses across agency and independent work. Clients anonymized.
+            </p>
           </FadeIn>
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 20,
-              marginTop: 28,
             }}
           >
-            <ProcessStep
-              number="01"
-              title="Diagnose"
-              description="Audit spend, tracking, structure, and attribution. Find the waste, friction, and gaps that are costing you money or hiding signal."
-              delay={0.1}
-            />
-            <ProcessStep
-              number="02"
-              title="Design"
-              description="Rebuild campaigns, measurement frameworks, workflows, and reporting. Create architecture that maps platform performance to actual business outcomes."
-              delay={0.2}
-            />
-            <ProcessStep
-              number="03"
-              title="Scale"
-              description="Automate what works. Build systems teams can maintain. Turn winning tests into repeatable frameworks that hold up across locations and budgets."
-              delay={0.3}
-            />
+            {analyses.map((a, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: 8,
+                    padding: "clamp(20px, 3vw, 28px)",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: "0.68rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: GOLD,
+                      marginBottom: 10,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {a.tag}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "'Instrument Serif', Georgia, serif",
+                      fontSize: "clamp(1.1rem, 1.6vw, 1.3rem)",
+                      color: "white",
+                      lineHeight: 1.3,
+                      fontWeight: 400,
+                      marginBottom: 14,
+                    }}
+                  >
+                    {a.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: "0.86rem",
+                      color: "rgba(255,255,255,0.72)",
+                      lineHeight: 1.6,
+                      marginBottom: 20,
+                      flex: 1,
+                    }}
+                  >
+                    {a.description}
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 8,
+                      paddingTop: 16,
+                      borderTop: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    {a.findings.map((f, j) => (
+                      <div
+                        key={j}
+                        style={{
+                          display: "flex",
+                          alignItems: "baseline",
+                          gap: 10,
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "'Instrument Serif', Georgia, serif",
+                            fontSize: "1.2rem",
+                            color: GOLD,
+                            minWidth: "fit-content",
+                          }}
+                        >
+                          {f.metric}
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: "0.78rem",
+                            color: "rgba(255,255,255,0.7)",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {f.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -1019,8 +1232,7 @@ export default function Portfolio() {
               marginBottom: 32,
             }}
           >
-            Deep platform expertise combined with automation, analytics, and
-            measurement infrastructure.
+            Day-to-day tools and areas of focus.
           </p>
         </FadeIn>
 
@@ -1050,7 +1262,7 @@ export default function Portfolio() {
             style={{
               marginTop: 28,
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: 16,
             }}
           >
@@ -1099,51 +1311,40 @@ export default function Portfolio() {
           <FadeIn>
             <div>
               <SectionLabel>About</SectionLabel>
-              <h2
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)",
-                  color: NAVY,
-                  fontWeight: 400,
-                  marginBottom: 20,
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Strategist. Systems thinker. Clear communicator.
-              </h2>
               <div
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "0.92rem",
+                  fontSize: "0.95rem",
                   color: MEDIUM,
                   lineHeight: 1.7,
                   display: "flex",
                   flexDirection: "column",
                   gap: 14,
+                  marginTop: 12,
                 }}
               >
                 <p style={{ margin: 0 }}>
-                  I'm a senior paid search strategist based in Santa Barbara, CA
-                  with over a decade of experience managing large-budget search
-                  programs for franchise networks, national brands, and DTC
-                  e-commerce.
+                  I'm a senior performance marketing strategist based in Santa
+                  Barbara, CA. I work on paid media strategy, campaign
+                  operations, and marketing automation for franchise networks,
+                  national brands, and DTC e-commerce. Over a decade in the
+                  field; managing $1M+ in monthly ad spend since 2020.
                 </p>
                 <p style={{ margin: 0 }}>
-                  My strength isn't just running campaigns. It's diagnosing why
-                  things aren't working, designing better structures, and
-                  building the measurement and automation systems that let good
-                  work scale without falling apart.
+                  Most of my work sits at the intersection of execution and
+                  analysis - running paid media programs, building the
+                  measurement and automation systems behind them, and digging
+                  into the data to understand what's actually working.
                 </p>
                 <p style={{ margin: 0 }}>
-                  I think clearly about messy problems, I communicate findings in
-                  ways stakeholders can actually use, and I care more about real
-                  business outcomes than platform vanity metrics.
+                  I also mentor junior team members and lead internal training
+                  on things like tCPA strategy, conversion tracking, Google Tag
+                  Manager, JavaScript for paid search, and budget forecasting.
                 </p>
-                <p style={{ margin: 0, color: LIGHT_TEXT, fontStyle: "italic" }}>
-                  Outside of paid media, I build systems, research and present on
-                  complex topics, and produce story-driven work. That range makes
-                  me especially good at turning messy information into something
-                  clear, useful, and actionable.
+                <p style={{ margin: 0, color: LIGHT_TEXT }}>
+                  Outside of paid media, I work on side projects involving
+                  systems, research, and writing. They keep me sharp on the
+                  parts of the job that aren't strictly platform mechanics.
                 </p>
               </div>
             </div>
@@ -1247,18 +1448,53 @@ export default function Portfolio() {
                     fontWeight: 500,
                   }}
                 >
+                  Certifications
+                </h3>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.82rem",
+                    color: MEDIUM,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  <div>Google Ads Search Certified</div>
+                  <div>CXL Certified in Conversion Rate Optimization</div>
+                  <div>Blue Array Certified SEO Manager & Technical SEO Specialist</div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  marginTop: 24,
+                  paddingTop: 20,
+                  borderTop: `1px solid ${BORDER}`,
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.78rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    color: LIGHT_TEXT,
+                    marginBottom: 12,
+                    fontWeight: 500,
+                  }}
+                >
                   Education
                 </h3>
                 <div
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.85rem",
+                    fontSize: "0.82rem",
                     color: MEDIUM,
                     lineHeight: 1.6,
                   }}
                 >
                   <div>BA, Psychology - Cal State Long Beach</div>
                   <div>AS, Criminology - Santa Barbara City College</div>
+                  <div>AA, Social and Behavioral Sciences - Santa Barbara City College</div>
                 </div>
               </div>
             </div>
@@ -1280,7 +1516,7 @@ export default function Portfolio() {
           <div style={{ marginBottom: 20 }}>
             <GPLogo size={48} />
           </div>
-          <SectionLabel>Get in Touch</SectionLabel>
+          <SectionLabel>Contact</SectionLabel>
           <h2
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
@@ -1291,7 +1527,7 @@ export default function Portfolio() {
               letterSpacing: "-0.01em",
             }}
           >
-            Let's talk about your paid search program.
+            Get in touch.
           </h2>
           <p
             style={{
@@ -1303,15 +1539,16 @@ export default function Portfolio() {
               lineHeight: 1.6,
             }}
           >
-            Whether you need an audit, a rebuild, or ongoing strategic
-            management, I'm happy to have the conversation.
+            Open to conversations about new roles, consulting work, or
+            interesting problems.
           </p>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              gap: 16,
+              gap: 12,
               flexWrap: "wrap",
+              marginBottom: 16,
             }}
           >
             <a
@@ -1353,6 +1590,27 @@ export default function Portfolio() {
               onMouseLeave={(e) => (e.target.style.borderColor = BORDER)}
             >
               LinkedIn
+            </a>
+            <a
+              href="/Gabriel_Perea_Resume_2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.88rem",
+                fontWeight: 500,
+                color: NAVY,
+                border: `1px solid ${BORDER}`,
+                padding: "13px 32px",
+                borderRadius: 6,
+                textDecoration: "none",
+                transition: "border-color 0.2s",
+                display: "inline-block",
+              }}
+              onMouseEnter={(e) => (e.target.style.borderColor = NAVY)}
+              onMouseLeave={(e) => (e.target.style.borderColor = BORDER)}
+            >
+              Download Resume
             </a>
           </div>
         </FadeIn>
@@ -1397,7 +1655,7 @@ export default function Portfolio() {
               letterSpacing: "0.02em",
             }}
           >
-            Strategic search. Better measurement. Smarter systems.
+            Santa Barbara, CA · 2026
           </div>
         </div>
       </footer>
