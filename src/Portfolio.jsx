@@ -18,52 +18,93 @@ const BORDER = "#e8e6e1";
 const agencyCaseStudies = [
   {
     tag: "Franchise · Wireless Retail",
-    title: "Rebuilt paid media structure for a national wireless retail franchise",
+    title: "Managed a multi-year paid media program for a national wireless retail franchise",
     challenge:
-      "Inherited an underperforming account structure across a large wireless retail franchise network with inconsistent campaign architecture and rising CPLs.",
+      "A national wireless retail franchise ran paid media across a subset of participating store locations, with hundreds of non-participating locations acting as a natural control. The program needed to prove it was driving incremental in-store activations and upgrades, not just spending budget.",
     actions: [
-      "Designed and rolled out a new account structure across the full franchise network",
-      "Rebuilt campaign segmentation, keyword architecture, and bidding strategy",
-      "Aligned conversion tracking with actual business outcomes",
-      "Converted winning tests into repeatable performance marketing frameworks adopted department-wide",
+      "Managed paid media across participating locations and measured per-store performance against non-participating stores",
+      "Reallocated regional budgets toward high-efficiency markets and away from underperformers",
+      "Drove cost-per-lead efficiency while holding or growing store visits year over year",
+      "Tracked the per-store activation advantage across multiple years to demonstrate sustained, growing impact",
     ],
     results: [
-      { metric: "27%", label: "CPL reduction" },
-      { metric: "107%", label: "Leads/location growth YoY" },
-      { metric: "22%", label: "Additional YoY lift the following quarter" },
+      { metric: "+22%", label: "Activations/upgrades per store vs. non-participating (2024)" },
+      { metric: "−14%", label: "Cost per lead YoY (2023)" },
+      { metric: "2x", label: "Per-store advantage grew vs. 2022 (~10 → ~20/store/mo)" },
     ],
+    chart: "comparison",
   },
   {
     tag: "Franchise · Fitness",
     title: "Launched paid media for a boutique fitness franchise from zero",
     challenge:
-      "A boutique fitness franchise had no paid media presence and needed to drive lead volume and new guest counts from scratch, in a category with notoriously high CPLs.",
+      "A boutique fitness franchise had no paid media presence and needed to drive lead volume from scratch while scaling to new locations, in a category with notoriously high CPLs.",
     actions: [
       "Built campaign architecture, conversion tracking, and budget pacing from the ground up",
       "Launched Search and PMax campaigns aligned with location-level performance",
-      "Iterated on creative, bidding, and audience strategy over the first 6 months",
-      "Established reporting framework to monitor location-level lead quality and volume",
+      "Iterated on creative, bidding, and audience strategy month over month",
+      "Scaled the program across new locations without diluting per-location lead volume",
     ],
     results: [
+      { metric: "+72%", label: "Lead volume since launch (+131% at holiday peak)" },
+      { metric: "−33%", label: "Cost per lead since launch" },
       { metric: "67%", label: "Below industry CPL benchmark" },
-      { metric: "0→Scaling", label: "Lead volume and new guest counts growing MoM" },
     ],
+    chart: "launch",
+  },
+  {
+    tag: "Franchise · Personal Care",
+    title: "Scaled a personal-care franchise's paid program ~4x while improving efficiency",
+    challenge:
+      "A personal-care franchise ran a small, underinvested paid program. The opportunity was to scale lead volume aggressively without letting cost per lead climb. (The account was later wound down as the parent company restructured - outside the program's control.)",
+    actions: [
+      "Expanded budget and campaign coverage while holding strict cost discipline",
+      "Reallocated spend toward the most efficient geos and studios as volume grew",
+      "Grew per-studio lead volume, not just account-level totals",
+      "Drove new-customer (NDC) volume in step with lead growth, keeping cost-per-new-customer in check",
+    ],
+    results: [
+      { metric: "~4x", label: "Monthly leads at peak (vs. 2023 average)" },
+      { metric: "−16%", label: "Cost per lead, even while scaling spend" },
+      { metric: "2x", label: "Leads per studio" },
+    ],
+    chart: "scaleup",
+  },
+  {
+    tag: "Franchise · Hair Care",
+    title: "Scaled a hair-care franchise's paid program ~7x while improving efficiency",
+    challenge:
+      "A hair-care franchise was running a small paid program with room to grow. The opportunity was to scale lead and new-customer volume aggressively while pushing cost per lead down, not up. (The account was later wound down as the parent company restructured - outside the program's control.)",
+    actions: [
+      "Scaled spend 4-5x while improving cost efficiency through tight structure and bidding",
+      "Expanded campaign and geo coverage in step with demonstrated per-location performance",
+      "Drove new-customer (NDC) volume up roughly 5x at peak, keeping acquisition cost in check",
+      "Doubled per-studio lead volume rather than just inflating account-level totals",
+    ],
+    results: [
+      { metric: "~7x", label: "Monthly leads at peak (vs. 2023 average)" },
+      { metric: "−22%", label: "Cost per lead during peak scaling" },
+      { metric: "~5x", label: "New customers at peak" },
+    ],
+    chart: "scaleup_hair",
   },
   {
     tag: "Franchise · Beauty",
-    title: "Sustained CPL improvements for a national beauty franchise under budget pressure",
+    title: "Defended per-studio performance for a beauty franchise through a major contraction",
     challenge:
-      "A national beauty franchise faced declining budgets and a reduced location count. The team needed to defend and improve efficiency despite the constraints.",
+      "A national beauty/lash franchise's parent company entered a period of turmoil, and the studio network contracted by roughly 85% (from ~240 locations to ~35) - entirely outside paid media's control. The goal shifted from growth to defending per-studio performance and lead quality as the footprint collapsed.",
     actions: [
-      "Diagnosed structural inefficiencies and reallocated spend toward stronger performing geos and keywords",
-      "Refined bidding strategy and negative keyword coverage across the network",
-      "Tightened conversion tracking to ensure budgets followed real revenue signals",
-      "Maintained performance discipline through multiple consecutive quarters",
+      "Reallocated shrinking budgets toward the strongest-performing geos and studios",
+      "Refined bidding, negative keyword coverage, and creative to protect efficiency as scale (and algorithmic data density) declined",
+      "Tightened conversion tracking so budget followed real new-customer signals, not just raw leads",
+      "Held the line on per-studio lead volume and improved lead-to-customer quality through multiple years of network decline",
     ],
     results: [
-      { metric: "12%", label: "Q3 CPL improvement YoY" },
-      { metric: "16%", label: "Q4 CPL improvement YoY" },
+      { metric: "Held", label: "Per-studio lead volume despite an 85% network contraction" },
+      { metric: "~44%", label: "Lead-to-customer rate, up from ~35% (peaks to 59%)" },
+      { metric: "Stable", label: "CPL maintained despite lost scale" },
     ],
+    chart: "resilience",
   },
   {
     tag: "Diagnostic · Bing Ads",
@@ -394,6 +435,220 @@ function Stat({ number, label, delay }) {
   );
 }
 
+// Scale-up data sets (real data, anonymized, indexed to 2023 avg = 100)
+const RADIANT_SCALEUP = {
+  leads: [87, 105, 118, 59, 67, 74, 94, 95, 105, 120, 125, 153, 174, 290, 314, 364, 387, 347, 314, 289, 209, 186, 179, 229],
+  cpl: [124, 103, 95, 135, 98, 89, 74, 88, 114, 111, 92, 76, 69, 94, 87, 83, 79, 81, 80, 87, 92, 109, 139, 111],
+  maxV: 400,
+};
+const DRYBAR_SCALEUP = {
+  leads: [113, 104, 147, 136, 123, 87, 79, 84, 100, 81, 60, 86, 281, 489, 612, 705, 538, 518, 364, 304, 313, 315, 312, 336],
+  cpl: [114, 135, 83, 67, 84, 98, 116, 107, 96, 97, 94, 109, 97, 88, 75, 69, 87, 95, 107, 93, 91, 99, 108, 96],
+  maxV: 720,
+};
+
+// Efficient scale-up - leads up while CPL holds, indexed to 2023 avg
+function ScaleUpChart({ leads, cpl, maxV = 400 }) {
+  const yearTicks = [{ i: 0, label: "2023" }, { i: 12, label: "2024" }];
+
+  const W = 600;
+  const H = 250;
+  const padL = 30;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const n = leads.length;
+
+  const x = (i) => padL + (i / (n - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = "#9a958c";
+  const cplColor = "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Leads and cost per lead through 2024 scale-up, indexed to 2023 average"
+    >
+      <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.3" strokeDasharray="2 3" />
+      <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
+      <path d={toPath(cpl)} fill="none" stroke={cplColor} strokeWidth="2" strokeDasharray="5 4" />
+      <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {yearTicks.map((t) => (
+        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+          {t.label}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+// Network contraction vs per-studio resilience - indexed to start (real Lash data, anonymized)
+function ResilienceChart() {
+  const studios = [100, 101, 99, 99, 96, 97, 97, 92, 84, 82, 80, 80, 75, 74, 72, 71, 65, 60, 58, 55, 51, 28, 22, 21, 20, 14, 15, 15, 15, 14, 14, 15, 15, 15, 15, 15];
+  const lps = [100, 92, 102, 100, 95, 75, 71, 71, 71, 99, 102, 97, 94, 109, 100, 80, 73, 72, 70, 71, 65, 70, 83, 88, 80, 80, 91, 80, 71, 73, 71, 79, 80, 83, 93, 85];
+  // Year tick positions (approx index in the 36-point series)
+  const yearTicks = [{ i: 0, label: "2023" }, { i: 12, label: "2024" }, { i: 20, label: "2025" }, { i: 32, label: "2026" }];
+
+  const W = 600;
+  const H = 250;
+  const padL = 30;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 110;
+  const n = studios.length;
+
+  const x = (i) => padL + (i / (n - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = "#9a958c";
+  const studioColor = "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Studio network size versus leads per studio, indexed to start"
+    >
+      {[0, 50, 100].map((v) => (
+        <g key={v}>
+          <line x1={padL} y1={y(v)} x2={W - padR} y2={y(v)} stroke={axis} strokeWidth="1" opacity="0.15" />
+          <text x={padL - 6} y={y(v) + 3} textAnchor="end" fontSize="9" fill={axis}>{v}</text>
+        </g>
+      ))}
+      {/* studios - dashed gray, collapsing */}
+      <path d={toPath(studios)} fill="none" stroke={studioColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* leads per studio - solid gold, holding */}
+      <path d={toPath(lps)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {yearTicks.map((t) => (
+        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+          {t.label}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+// Launch trajectory - leads up vs CPL down, indexed to launch month (anonymized)
+function LaunchChart() {
+  const months = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
+  // Indexed to launch month = 100
+  const leads = [100, 130, 127, 154, 191, 231, 178, 167, 174, 172];
+  const cpl = [100, 78, 91, 90, 86, 80, 62, 65, 67, 67];
+
+  const W = 600;
+  const H = 250;
+  const padL = 30;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 240;
+
+  const x = (i) => padL + (i / (months.length - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = "#9a958c";
+  const cplColor = "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Leads and cost per lead since launch, indexed to launch month"
+    >
+      {/* baseline at 100 */}
+      <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.3" strokeDasharray="2 3" />
+      <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
+      {/* CPL - dashed gray, falling */}
+      <path d={toPath(cpl)} fill="none" stroke={cplColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* Leads - solid gold, rising */}
+      <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {/* month labels */}
+      {months.map((m, i) => (
+        <text key={i} x={x(i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+          {m}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+// DM vs Non-DM per-store comparison - 2024 monthly (real VHA data, anonymized)
+function ComparisonChart() {
+  const months = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N"];
+  const monthFull = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"];
+  const dm = [89.9, 116.1, 121.2, 99.1, 121.3, 111.2, 111.0, 120.1, 112.7, 115.1, 99.4];
+  const nonDm = [75.7, 94.3, 101.0, 85.3, 100.1, 91.7, 91.7, 98.8, 88.1, 89.5, 78.6];
+
+  const W = 600;
+  const H = 250;
+  const padL = 34;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 140;
+
+  const x = (i) => padL + (i / (months.length - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = "#9a958c";
+  const nonDmColor = "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Activations and upgrades per store per month, participating versus non-participating locations, 2024"
+    >
+      {/* gridlines */}
+      {[0, 35, 70, 105, 140].map((v) => (
+        <g key={v}>
+          <line x1={padL} y1={y(v)} x2={W - padR} y2={y(v)} stroke={axis} strokeWidth="1" opacity="0.15" />
+          <text x={padL - 6} y={y(v) + 3} textAnchor="end" fontSize="9" fill={axis}>
+            {v}
+          </text>
+        </g>
+      ))}
+      {/* non-DM - dashed gray */}
+      <path d={toPath(nonDm)} fill="none" stroke={nonDmColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* DM - solid gold */}
+      <path d={toPath(dm)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {/* month labels */}
+      {months.map((m, i) => (
+        <text key={i} x={x(i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+          {m}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
 // Seasonal line chart - current vs prior period, indexed (no absolute values)
 function SeasonalChart({ dark = false }) {
   const months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"];
@@ -682,6 +937,286 @@ function CaseStudyCard({ study, index }) {
                 >
                   — {study.testimonial.attribution}
                 </p>
+              </div>
+            )}
+
+            {study.chart === "scaleup_hair" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Leads vs. cost per lead · indexed to 2023 average
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Leads
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Cost per lead
+                  </span>
+                </div>
+                <ScaleUpChart leads={DRYBAR_SCALEUP.leads} cpl={DRYBAR_SCALEUP.cpl} maxV={DRYBAR_SCALEUP.maxV} />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Leads scaled to ~7x while cost per lead fell below the 2023 average.
+                </div>
+              </div>
+            )}
+
+            {study.chart === "scaleup" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Leads vs. cost per lead · indexed to 2023 average
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Leads
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Cost per lead
+                  </span>
+                </div>
+                <ScaleUpChart leads={RADIANT_SCALEUP.leads} cpl={RADIANT_SCALEUP.cpl} maxV={RADIANT_SCALEUP.maxV} />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Leads scaled to ~4x while cost per lead stayed at or below the 2023 average.
+                </div>
+              </div>
+            )}
+
+            {study.chart === "resilience" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Network size vs. per-studio leads · indexed to start
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Leads per studio
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Studios in network
+                  </span>
+                </div>
+                <ResilienceChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  The network shrank ~85%, but per-studio lead volume held steady. Indexed to start = 100.
+                </div>
+              </div>
+            )}
+
+            {study.chart === "launch" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Leads vs. cost per lead · indexed to launch month
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Leads
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Cost per lead
+                  </span>
+                </div>
+                <LaunchChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Leads climbed while cost per lead fell. Indexed to launch = 100.
+                </div>
+              </div>
+            )}
+
+            {study.chart === "comparison" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Activations + upgrades per store / month · 2024
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Participating stores
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Non-participating
+                  </span>
+                </div>
+                <ComparisonChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Participating stores outperformed non-participating locations every month of the year.
+                </div>
               </div>
             )}
 
