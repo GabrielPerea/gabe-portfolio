@@ -54,37 +54,37 @@ const agencyCaseStudies = [
   },
   {
     tag: "Franchise · Personal Care",
-    title: "Scaled a personal-care franchise's paid program ~4x while improving efficiency",
+    title: "More than doubled per-store lead volume for a personal-care franchise",
     challenge:
-      "A personal-care franchise ran a small, underinvested paid program. The opportunity was to scale lead volume aggressively without letting cost per lead climb. (The account was later wound down as the parent company restructured - outside the program's control.)",
+      "A personal-care franchise ran a small, underinvested paid program. The opportunity was to lift per-location lead volume and scale the program to more studios without letting cost per lead climb. (The account was later wound down as the parent company restructured - outside the program's control.)",
     actions: [
-      "Expanded budget and campaign coverage while holding strict cost discipline",
-      "Reallocated spend toward the most efficient geos and studios as volume grew",
-      "Grew per-studio lead volume, not just account-level totals",
-      "Drove new-customer (NDC) volume in step with lead growth, keeping cost-per-new-customer in check",
+      "Improved per-store lead volume through tighter campaign structure, bidding, and creative",
+      "Scaled the program to ~1.7x more studios as per-location performance proved out",
+      "Held cost discipline throughout, improving CPL even while expanding spend",
+      "Grew new-customer (NDC) volume in step with lead growth",
     ],
     results: [
-      { metric: "~4x", label: "Monthly leads at peak (vs. 2023 average)" },
-      { metric: "−16%", label: "Cost per lead, even while scaling spend" },
-      { metric: "2x", label: "Leads per studio" },
+      { metric: "2.3x", label: "Leads per store at peak (vs. 2023 average)" },
+      { metric: "−16%", label: "Cost per lead, even while scaling" },
+      { metric: "1.7x", label: "Studios scaled into the program" },
     ],
     chart: "scaleup",
   },
   {
     tag: "Franchise · Hair Care",
-    title: "Scaled a hair-care franchise's paid program ~7x while improving efficiency",
+    title: "Doubled per-store lead volume while scaling a hair-care franchise 3.5x",
     challenge:
-      "A hair-care franchise was running a small paid program with room to grow. The opportunity was to scale lead and new-customer volume aggressively while pushing cost per lead down, not up. (The account was later wound down as the parent company restructured - outside the program's control.)",
+      "A hair-care franchise was running a small paid program with room to grow. The opportunity was to lift per-location lead volume while scaling the program to many more studios and pushing cost per lead down. (The account was later wound down as the parent company restructured - outside the program's control.)",
     actions: [
-      "Scaled spend 4-5x while improving cost efficiency through tight structure and bidding",
-      "Expanded campaign and geo coverage in step with demonstrated per-location performance",
-      "Drove new-customer (NDC) volume up roughly 5x at peak, keeping acquisition cost in check",
-      "Doubled per-studio lead volume rather than just inflating account-level totals",
+      "Doubled per-store lead volume through tight campaign structure and bidding",
+      "Scaled the program across ~3.5x more studios as per-location performance held",
+      "Drove cost per lead down ~22% during the peak scaling period",
+      "Grew new-customer (NDC) volume roughly 5x at peak, keeping acquisition cost in check",
     ],
     results: [
-      { metric: "~7x", label: "Monthly leads at peak (vs. 2023 average)" },
+      { metric: "~2x", label: "Leads per store at peak (vs. 2023 average)" },
       { metric: "−22%", label: "Cost per lead during peak scaling" },
-      { metric: "~5x", label: "New customers at peak" },
+      { metric: "3.5x", label: "Studios scaled into the program" },
     ],
     chart: "scaleup_hair",
   },
@@ -435,16 +435,16 @@ function Stat({ number, label, delay }) {
   );
 }
 
-// Scale-up data sets (real data, anonymized, indexed to 2023 avg = 100)
+// Scale-up data sets (real data, anonymized, leads per store indexed to 2023 avg = 100)
 const RADIANT_SCALEUP = {
-  leads: [87, 105, 118, 59, 67, 74, 94, 95, 105, 120, 125, 153, 174, 290, 314, 364, 387, 347, 314, 289, 209, 186, 179, 229],
+  leads: [79, 85, 96, 58, 76, 80, 125, 102, 99, 119, 123, 158, 172, 183, 183, 217, 225, 202, 193, 193, 148, 114, 120, 148],
   cpl: [124, 103, 95, 135, 98, 89, 74, 88, 114, 111, 92, 76, 69, 94, 87, 83, 79, 81, 80, 87, 92, 109, 139, 111],
-  maxV: 400,
+  maxV: 250,
 };
 const DRYBAR_SCALEUP = {
-  leads: [113, 104, 147, 136, 123, 87, 79, 84, 100, 81, 60, 86, 281, 489, 612, 705, 538, 518, 364, 304, 313, 315, 312, 336],
+  leads: [88, 86, 130, 139, 116, 88, 79, 86, 110, 97, 85, 94, 128, 144, 181, 199, 159, 144, 124, 161, 160, 155, 153, 179],
   cpl: [114, 135, 83, 67, 84, 98, 116, 107, 96, 97, 94, 109, 97, 88, 75, 69, 87, 95, 107, 93, 91, 99, 108, 96],
-  maxV: 720,
+  maxV: 250,
 };
 
 // Efficient scale-up - leads up while CPL holds, indexed to 2023 avg
@@ -961,7 +961,7 @@ function CaseStudyCard({ study, index }) {
                     fontWeight: 500,
                   }}
                 >
-                  Leads vs. cost per lead · indexed to 2023 average
+                  Leads per store vs. cost per lead · indexed to 2023 average
                 </div>
                 <div
                   style={{
@@ -974,7 +974,7 @@ function CaseStudyCard({ study, index }) {
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
                     <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
-                    Leads
+                    Leads per store
                   </span>
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
                     <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
@@ -991,7 +991,7 @@ function CaseStudyCard({ study, index }) {
                     marginTop: 4,
                   }}
                 >
-                  Leads scaled to ~7x while cost per lead fell below the 2023 average.
+                  Per-store lead volume roughly doubled while cost per lead fell below the 2023 average.
                 </div>
               </div>
             )}
@@ -1017,7 +1017,7 @@ function CaseStudyCard({ study, index }) {
                     fontWeight: 500,
                   }}
                 >
-                  Leads vs. cost per lead · indexed to 2023 average
+                  Leads per store vs. cost per lead · indexed to 2023 average
                 </div>
                 <div
                   style={{
@@ -1030,7 +1030,7 @@ function CaseStudyCard({ study, index }) {
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
                     <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
-                    Leads
+                    Leads per store
                   </span>
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
                     <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
@@ -1047,7 +1047,7 @@ function CaseStudyCard({ study, index }) {
                     marginTop: 4,
                   }}
                 >
-                  Leads scaled to ~4x while cost per lead stayed at or below the 2023 average.
+                  Per-store lead volume more than doubled while cost per lead stayed at or below the 2023 average.
                 </div>
               </div>
             )}
