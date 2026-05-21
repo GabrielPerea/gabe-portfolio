@@ -118,6 +118,7 @@ const consultingCaseStudies = [
       { metric: "40%", label: "CPA reduction" },
       { metric: "65%", label: "ROAS improvement" },
     ],
+    chart: "seasonal",
   },
   {
     tag: "SEO · Local Jewelry",
@@ -187,6 +188,11 @@ const analyses = [
       { metric: "+28%", label: "Net lift in Paid Search leads vs. control" },
       { metric: "+17%", label: "Net lift in NDCs" },
       { metric: "−9.5%", label: "CPL improvement beyond market trends" },
+    ],
+    liftData: [
+      { label: "Paid Search leads", value: 28, display: "+28%" },
+      { label: "New patients (NDCs)", value: 17, display: "+17%" },
+      { label: "CPL improvement", value: 9.5, display: "−9.5%" },
     ],
   },
   {
@@ -388,6 +394,121 @@ function Stat({ number, label, delay }) {
   );
 }
 
+// Seasonal line chart - current vs prior period, indexed (no absolute values)
+function SeasonalChart({ dark = false }) {
+  const months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"];
+  // Indexed shape (0-100), modeled on the real current-vs-prior seasonal curve
+  const current = [9, 12, 17, 45, 100, 33, 13];
+  const prior = [6, 8, 11, 28, 62, 19, 8];
+
+  const W = 600;
+  const H = 240;
+  const padL = 16;
+  const padR = 16;
+  const padT = 20;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 100;
+
+  const x = (i) => padL + (i / (months.length - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = dark ? "rgba(255,255,255,0.4)" : "#9a958c";
+  const priorColor = dark ? "rgba(255,255,255,0.45)" : "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Conversion value, current period versus prior period, indexed"
+    >
+      {/* baseline */}
+      <line x1={padL} y1={y(0)} x2={W - padR} y2={y(0)} stroke={axis} strokeWidth="1" opacity="0.3" />
+      {/* prior period - dashed */}
+      <path d={toPath(prior)} fill="none" stroke={priorColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* current period - solid gold */}
+      <path d={toPath(current)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {/* peak marker on current */}
+      <circle cx={x(4)} cy={y(100)} r="4" fill={GOLD} />
+      {/* month labels */}
+      {months.map((m, i) => (
+        <text
+          key={m}
+          x={x(i)}
+          y={H - 14}
+          textAnchor="middle"
+          fontSize="11"
+          fill={axis}
+        >
+          {m}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+// Horizontal lift bars for analysis cards
+function LiftBars({ data }) {
+  const max = Math.max(...data.map((d) => Math.abs(d.value)));
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      {data.map((d, i) => (
+        <div key={i}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: 5,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.76rem",
+                color: "rgba(255,255,255,0.7)",
+              }}
+            >
+              {d.label}
+            </span>
+            <span
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "1rem",
+                color: GOLD,
+              }}
+            >
+              {d.display}
+            </span>
+          </div>
+          <div
+            style={{
+              height: 6,
+              background: "rgba(255,255,255,0.1)",
+              borderRadius: 3,
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: `${(Math.abs(d.value) / max) * 100}%`,
+                background: GOLD,
+                borderRadius: 3,
+              }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function CaseStudyCard({ study, index }) {
   const [expanded, setExpanded] = useState(false);
   return (
@@ -561,6 +682,62 @@ function CaseStudyCard({ study, index }) {
                 >
                   — {study.testimonial.attribution}
                 </p>
+              </div>
+            )}
+
+            {study.chart === "seasonal" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Conversion value · holiday season
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    This period
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Prior period
+                  </span>
+                </div>
+                <SeasonalChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Indexed to peak. Values relative, not absolute.
+                </div>
               </div>
             )}
 
@@ -970,7 +1147,7 @@ export default function Portfolio() {
         >
           <Stat number="$1M+" label="Monthly Ad Spend" delay={0} />
           <Stat number="800+" label="Active Campaigns" delay={0.1} />
-          <Stat number="67%" label="Best CPL vs. Benchmark" delay={0.2} />
+          <Stat number="25+" label="SMB Clients" delay={0.2} />
           <Stat number="10+" label="Years Experience" delay={0.3} />
         </div>
       </section>
@@ -1164,44 +1341,53 @@ export default function Portfolio() {
                   </p>
                   <div
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 8,
                       paddingTop: 16,
                       borderTop: "1px solid rgba(255,255,255,0.1)",
                     }}
                   >
-                    {a.findings.map((f, j) => (
+                    {a.liftData ? (
+                      <LiftBars data={a.liftData} />
+                    ) : (
                       <div
-                        key={j}
                         style={{
                           display: "flex",
-                          alignItems: "baseline",
-                          gap: 10,
+                          flexDirection: "column",
+                          gap: 8,
                         }}
                       >
-                        <span
-                          style={{
-                            fontFamily: "'Instrument Serif', Georgia, serif",
-                            fontSize: "1.2rem",
-                            color: GOLD,
-                            minWidth: "fit-content",
-                          }}
-                        >
-                          {f.metric}
-                        </span>
-                        <span
-                          style={{
-                            fontFamily: "'DM Sans', sans-serif",
-                            fontSize: "0.78rem",
-                            color: "rgba(255,255,255,0.7)",
-                            lineHeight: 1.4,
-                          }}
-                        >
-                          {f.label}
-                        </span>
+                        {a.findings.map((f, j) => (
+                          <div
+                            key={j}
+                            style={{
+                              display: "flex",
+                              alignItems: "baseline",
+                              gap: 10,
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: "'Instrument Serif', Georgia, serif",
+                                fontSize: "1.2rem",
+                                color: GOLD,
+                                minWidth: "fit-content",
+                              }}
+                            >
+                              {f.metric}
+                            </span>
+                            <span
+                              style={{
+                                fontFamily: "'DM Sans', sans-serif",
+                                fontSize: "0.78rem",
+                                color: "rgba(255,255,255,0.7)",
+                                lineHeight: 1.4,
+                              }}
+                            >
+                              {f.label}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
               </FadeIn>
