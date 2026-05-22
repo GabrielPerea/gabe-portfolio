@@ -17,6 +17,25 @@ const BORDER = "#e8e6e1";
 
 const agencyCaseStudies = [
   {
+    tag: "Franchise · Healthcare · Turnaround",
+    title: "Stepped into a leadership gap and turned around a national chiropractic account",
+    challenge:
+      "During a leadership transition, a national chiropractic franchise's paid media program was sliding - leads falling and cost per lead climbing - while corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). Working alongside a paid search specialist, I took the lead on turning performance around.",
+    actions: [
+      "Rebuilt the paid search account structure from the ground up",
+      "Reconfigured Performance Max to optimize for store visits instead of lead forms, which had been generating spam through Discovery placements and cannibalizing Search",
+      "Won back participating clinics and grew per-clinic lead volume as the new structure matured over the following two quarters",
+      "Drove leads and new-customer volume to record highs for the account by early 2026",
+    ],
+    results: [
+      { metric: "+43%", label: "Leads per clinic during the turnaround" },
+      { metric: "−22%", label: "Cost per lead from its peak" },
+      { metric: "+25%", label: "Participating clinics won back (683 → 857)" },
+    ],
+    chart: "turnaround",
+    featured: true,
+  },
+  {
     tag: "Franchise · Wireless Retail",
     title: "Managed a multi-year paid media program for a national wireless retail franchise",
     challenge:
@@ -33,6 +52,7 @@ const agencyCaseStudies = [
       { metric: "2x", label: "Per-store advantage grew vs. 2022 (~10 → ~20/store/mo)" },
     ],
     chart: "comparison",
+    featured: true,
   },
   {
     tag: "Franchise · Fitness",
@@ -51,6 +71,7 @@ const agencyCaseStudies = [
       { metric: "67%", label: "Below industry CPL benchmark" },
     ],
     chart: "launch",
+    featured: true,
   },
   {
     tag: "Franchise · Personal Care",
@@ -87,20 +108,21 @@ const agencyCaseStudies = [
       { metric: "3.5x", label: "Studios scaled into the program" },
     ],
     chart: "scaleup_hair",
+    featured: true,
   },
   {
     tag: "Franchise · Beauty",
-    title: "Defended per-studio performance for a beauty franchise through a major contraction",
+    title: "Held per-studio performance for a beauty franchise as its managed footprint shrank",
     challenge:
-      "A national beauty/lash franchise's parent company entered a period of turmoil, and the studio network contracted by roughly 85% (from ~240 locations to ~35) - entirely outside paid media's control. The goal shifted from growth to defending per-studio performance and lead quality as the footprint collapsed.",
+      "Over the engagement, the brand's parent company progressively pulled studios out of the agency-managed program - the managed book shrank from ~240 studios to ~35, driven by the parent's restructuring rather than performance. The goal was to keep the remaining studios performing and improve lead quality as the managed footprint shrank.",
     actions: [
-      "Reallocated shrinking budgets toward the strongest-performing geos and studios",
+      "Reallocated budgets toward the strongest-performing geos and studios as the program shrank",
       "Refined bidding, negative keyword coverage, and creative to protect efficiency as scale (and algorithmic data density) declined",
       "Tightened conversion tracking so budget followed real new-customer signals, not just raw leads",
-      "Held the line on per-studio lead volume and improved lead-to-customer quality through multiple years of network decline",
+      "Held per-studio lead volume steady and improved lead-to-customer quality across multiple years",
     ],
     results: [
-      { metric: "Held", label: "Per-studio lead volume despite an 85% network contraction" },
+      { metric: "Held", label: "Per-studio lead volume as the managed program shrank ~85%" },
       { metric: "~44%", label: "Lead-to-customer rate, up from ~35% (peaks to 59%)" },
       { metric: "Stable", label: "CPL maintained despite lost scale" },
     ],
@@ -437,20 +459,20 @@ function Stat({ number, label, delay }) {
 
 // Scale-up data sets (real data, anonymized, leads per store indexed to 2023 avg = 100)
 const RADIANT_SCALEUP = {
-  leads: [79, 85, 96, 58, 76, 80, 125, 102, 99, 119, 123, 158, 172, 183, 183, 217, 225, 202, 193, 193, 148, 114, 120, 148],
-  cpl: [124, 103, 95, 135, 98, 89, 74, 88, 114, 111, 92, 76, 69, 94, 87, 83, 79, 81, 80, 87, 92, 109, 139, 111],
+  leads: [125, 102, 99, 119, 123, 158, 172, 183, 183, 217, 225, 202],
+  cpl: [74, 88, 114, 111, 92, 76, 69, 94, 87, 83, 79, 81],
   maxV: 250,
+  yearTicks: [{ i: 0, label: "Mid 2023" }, { i: 6, label: "2024" }],
 };
 const DRYBAR_SCALEUP = {
   leads: [88, 86, 130, 139, 116, 88, 79, 86, 110, 97, 85, 94, 128, 144, 181, 199, 159, 144, 124, 161, 160, 155, 153, 179],
   cpl: [114, 135, 83, 67, 84, 98, 116, 107, 96, 97, 94, 109, 97, 88, 75, 69, 87, 95, 107, 93, 91, 99, 108, 96],
   maxV: 250,
+  yearTicks: [{ i: 0, label: "2023" }, { i: 12, label: "2024" }],
 };
 
 // Efficient scale-up - leads up while CPL holds, indexed to 2023 avg
-function ScaleUpChart({ leads, cpl, maxV = 400 }) {
-  const yearTicks = [{ i: 0, label: "2023" }, { i: 12, label: "2024" }];
-
+function ScaleUpChart({ leads, cpl, maxV = 400, yearTicks = [{ i: 0, label: "2023" }, { i: 12, label: "2024" }] }) {
   const W = 600;
   const H = 250;
   const padL = 30;
@@ -649,6 +671,58 @@ function ComparisonChart() {
   );
 }
 
+// Turnaround - leads per clinic up + CPL down before/after taking lead, indexed (real TJ data, anonymized)
+function TurnaroundChart() {
+  const lpc = [100, 88, 95, 89, 81, 88, 94, 98, 90, 94, 89, 92, 96, 97, 101, 95, 93, 97, 121, 139, 135];
+  const cpl = [100, 103, 98, 103, 106, 104, 103, 109, 111, 105, 108, 102, 95, 103, 106, 104, 104, 113, 93, 87, 86];
+  const tookLead = 12; // Aug 2025
+  const yearTicks = [{ i: 0, label: "Aug 2024" }, { i: 17, label: "Jan 2026" }];
+
+  const W = 600;
+  const H = 262;
+  const padL = 30;
+  const padR = 16;
+  const padT = 26;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 150;
+  const n = lpc.length;
+
+  const x = (i) => padL + (i / (n - 1)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const toPath = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
+
+  const axis = "#9a958c";
+  const cplColor = "#9aa6ad";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Leads per clinic and cost per lead before and after taking lead, indexed to start"
+    >
+      <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.25" strokeDasharray="2 3" />
+      <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
+      {/* took lead marker */}
+      <line x1={x(tookLead)} y1={padT - 4} x2={x(tookLead)} y2={padT + plotH} stroke={GOLD} strokeWidth="1.5" strokeDasharray="3 3" opacity="0.65" />
+      <text x={x(tookLead)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={GOLD} fontWeight="600">Took lead</text>
+      {/* CPL - dashed gray */}
+      <path d={toPath(cpl)} fill="none" stroke={cplColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* leads per clinic - solid gold */}
+      <path d={toPath(lpc)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {yearTicks.map((t) => (
+        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+          {t.label}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
 // Seasonal line chart - current vs prior period, indexed (no absolute values)
 function SeasonalChart({ dark = false }) {
   const months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"];
@@ -764,8 +838,8 @@ function LiftBars({ data }) {
   );
 }
 
-function CaseStudyCard({ study, index }) {
-  const [expanded, setExpanded] = useState(false);
+function CaseStudyCard({ study, index, featured = false }) {
+  const [expanded, setExpanded] = useState(featured);
   return (
     <FadeIn delay={index * 0.08}>
       <div
@@ -940,6 +1014,62 @@ function CaseStudyCard({ study, index }) {
               </div>
             )}
 
+            {study.chart === "turnaround" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 4,
+                    fontWeight: 500,
+                  }}
+                >
+                  Leads per clinic vs. cost per lead · indexed to start
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 18,
+                    marginBottom: 8,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.74rem",
+                  }}
+                >
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
+                    <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
+                    Leads per clinic
+                  </span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
+                    <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
+                    Cost per lead
+                  </span>
+                </div>
+                <TurnaroundChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  After taking lead, per-clinic leads climbed and cost per lead fell as the new structure matured over the following two quarters.
+                </div>
+              </div>
+            )}
+
             {study.chart === "scaleup_hair" && (
               <div
                 style={{
@@ -981,7 +1111,7 @@ function CaseStudyCard({ study, index }) {
                     Cost per lead
                   </span>
                 </div>
-                <ScaleUpChart leads={DRYBAR_SCALEUP.leads} cpl={DRYBAR_SCALEUP.cpl} maxV={DRYBAR_SCALEUP.maxV} />
+                <ScaleUpChart leads={DRYBAR_SCALEUP.leads} cpl={DRYBAR_SCALEUP.cpl} maxV={DRYBAR_SCALEUP.maxV} yearTicks={DRYBAR_SCALEUP.yearTicks} />
                 <div
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
@@ -1037,7 +1167,7 @@ function CaseStudyCard({ study, index }) {
                     Cost per lead
                   </span>
                 </div>
-                <ScaleUpChart leads={RADIANT_SCALEUP.leads} cpl={RADIANT_SCALEUP.cpl} maxV={RADIANT_SCALEUP.maxV} />
+                <ScaleUpChart leads={RADIANT_SCALEUP.leads} cpl={RADIANT_SCALEUP.cpl} maxV={RADIANT_SCALEUP.maxV} yearTicks={RADIANT_SCALEUP.yearTicks} />
                 <div
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
@@ -1073,7 +1203,7 @@ function CaseStudyCard({ study, index }) {
                     fontWeight: 500,
                   }}
                 >
-                  Network size vs. per-studio leads · indexed to start
+                  Studios in program vs. per-studio leads · indexed to start
                 </div>
                 <div
                   style={{
@@ -1090,7 +1220,7 @@ function CaseStudyCard({ study, index }) {
                   </span>
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
                     <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
-                    Studios in network
+                    Studios in program
                   </span>
                 </div>
                 <ResilienceChart />
@@ -1103,7 +1233,7 @@ function CaseStudyCard({ study, index }) {
                     marginTop: 4,
                   }}
                 >
-                  The network shrank ~85%, but per-studio lead volume held steady. Indexed to start = 100.
+                  The managed program shrank ~85% as studios were pulled, but per-studio lead volume held steady. Indexed to start = 100.
                 </div>
               </div>
             )}
@@ -1719,6 +1849,28 @@ export default function Portfolio() {
             fontSize: "0.72rem",
             textTransform: "uppercase",
             letterSpacing: "0.1em",
+            color: GOLD,
+            marginBottom: 16,
+            fontWeight: 600,
+            paddingBottom: 8,
+            borderBottom: `1px solid ${BORDER}`,
+          }}>Featured</h3>
+        </FadeIn>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 44 }}>
+          {agencyCaseStudies
+            .filter((s) => s.featured)
+            .map((study, i) => (
+              <CaseStudyCard key={`featured-${i}`} study={study} index={i} featured={true} />
+            ))}
+        </div>
+
+        <FadeIn>
+          <h3 style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
             color: NAVY_LIGHT,
             marginBottom: 16,
             fontWeight: 600,
@@ -1735,9 +1887,11 @@ export default function Portfolio() {
             marginBottom: 40,
           }}
         >
-          {agencyCaseStudies.map((study, i) => (
-            <CaseStudyCard key={`agency-${i}`} study={study} index={i} />
-          ))}
+          {agencyCaseStudies
+            .filter((s) => !s.featured)
+            .map((study, i) => (
+              <CaseStudyCard key={`agency-${i}`} study={study} index={i} />
+            ))}
         </div>
 
         <FadeIn>
