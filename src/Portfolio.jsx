@@ -702,13 +702,22 @@ function TurnaroundChart() {
     >
       <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.25" strokeDasharray="2 3" />
       <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
-      {/* took lead marker */}
+      {/* Sep-Nov 2025 search structure rollout band */}
+      <rect x={x(13)} y={padT} width={x(15) - x(13)} height={plotH} fill={GOLD} opacity="0.09" />
+      {/* took lead marker (behind lines) */}
       <line x1={x(tookLead)} y1={padT - 4} x2={x(tookLead)} y2={padT + plotH} stroke={GOLD} strokeWidth="1.5" strokeDasharray="3 3" opacity="0.65" />
-      <text x={x(tookLead)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={GOLD} fontWeight="600">Took lead</text>
+      {/* Feb 2026 GBP optimizations marker (behind lines) */}
+      <line x1={x(18)} y1={padT - 4} x2={x(18)} y2={padT + plotH} stroke={clinicColor} strokeWidth="1.5" strokeDasharray="3 3" opacity="0.7" />
       {/* participating clinics - dashed gray */}
       <path d={toPath(clinics)} fill="none" stroke={clinicColor} strokeWidth="2" strokeDasharray="5 4" />
       {/* leads - solid gold */}
       <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {/* annotation labels (on top) */}
+      <text x={x(tookLead)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={GOLD} fontWeight="600">Took lead</text>
+      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 74} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>New search</text>
+      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 63} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>structure</text>
+      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 52} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>(batched, Sep–Nov)</text>
+      <text x={x(18)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={NAVY_LIGHT} fontWeight="600">GBP optimizations</text>
       {yearTicks.map((t) => (
         <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
           {t.label}
@@ -1060,7 +1069,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                     marginTop: 4,
                   }}
                 >
-                  Both fell as clinics moved to a competing agency. After we took lead, leads climbed to record highs while the clinic count stayed below its former peak - each clinic producing more.
+                  Both fell as clinics moved to a competing agency. We rolled out a new search structure in batches (Sep–Nov 2025); in February 2026, a fellow strategist designed account-wide Google Business Profile optimizations that the specialist team executed. Leads then climbed to record highs while the clinic count stayed below its former peak - each clinic producing more.
                 </div>
               </div>
             )}
