@@ -18,19 +18,19 @@ const BORDER = "#e8e6e1";
 const agencyCaseStudies = [
   {
     tag: "Franchise · Healthcare · Turnaround",
-    title: "Stepped into a leadership gap and turned around a national chiropractic account",
+    title: "Co-led the turnaround of a national chiropractic account through a leadership gap",
     challenge:
-      "During a leadership transition, a national chiropractic franchise's paid media program was sliding - leads falling and cost per lead climbing - while corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). Working alongside a paid search specialist, I took the lead on turning performance around.",
+      "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). A fellow strategist and I took on the turnaround together.",
     actions: [
       "Rebuilt the paid search account structure from the ground up",
       "Reconfigured Performance Max to optimize for store visits instead of lead forms, which had been generating spam through Discovery placements and cannibalizing Search",
-      "Won back participating clinics and grew per-clinic lead volume as the new structure matured over the following two quarters",
+      "Won clinics back into the program and grew per-clinic lead volume as the new structure matured over the following two quarters",
       "Drove leads and new-customer volume to record highs for the account by early 2026",
     ],
     results: [
       { metric: "+43%", label: "Leads per clinic during the turnaround" },
       { metric: "−22%", label: "Cost per lead from its peak" },
-      { metric: "+25%", label: "Participating clinics won back (683 → 857)" },
+      { metric: "+25%", label: "Clinics won back into the program (683 → 857)" },
     ],
     chart: "turnaround",
     featured: true,
@@ -671,10 +671,10 @@ function ComparisonChart() {
   );
 }
 
-// Turnaround - leads per clinic up + CPL down before/after taking lead, indexed (real TJ data, anonymized)
+// Turnaround - leads recover to record highs while clinic count stays below peak (real TJ data, anonymized)
 function TurnaroundChart() {
-  const lpc = [100, 88, 95, 89, 81, 88, 94, 98, 90, 94, 89, 92, 96, 97, 101, 95, 93, 97, 121, 139, 135];
-  const cpl = [100, 103, 98, 103, 106, 104, 103, 109, 111, 105, 108, 102, 95, 103, 106, 104, 104, 113, 93, 87, 86];
+  const leads = [100, 88, 95, 90, 82, 89, 95, 101, 87, 74, 71, 69, 74, 77, 84, 81, 81, 84, 106, 127, 127];
+  const clinics = [100, 100, 101, 101, 101, 102, 102, 103, 97, 79, 80, 75, 77, 80, 83, 85, 87, 87, 87, 92, 94];
   const tookLead = 12; // Aug 2025
   const yearTicks = [{ i: 0, label: "Aug 2024" }, { i: 17, label: "Jan 2026" }];
 
@@ -686,8 +686,8 @@ function TurnaroundChart() {
   const padB = 34;
   const plotW = W - padL - padR;
   const plotH = H - padT - padB;
-  const maxV = 150;
-  const n = lpc.length;
+  const maxV = 140;
+  const n = leads.length;
 
   const x = (i) => padL + (i / (n - 1)) * plotW;
   const y = (v) => padT + plotH - (v / maxV) * plotH;
@@ -695,7 +695,7 @@ function TurnaroundChart() {
     arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(" ");
 
   const axis = "#9a958c";
-  const cplColor = "#9aa6ad";
+  const clinicColor = "#9aa6ad";
 
   return (
     <svg
@@ -703,17 +703,17 @@ function TurnaroundChart() {
       width="100%"
       style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
       role="img"
-      aria-label="Leads per clinic and cost per lead before and after taking lead, indexed to start"
+      aria-label="Leads and participating clinics before and after taking lead, indexed to start"
     >
       <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.25" strokeDasharray="2 3" />
       <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
       {/* took lead marker */}
       <line x1={x(tookLead)} y1={padT - 4} x2={x(tookLead)} y2={padT + plotH} stroke={GOLD} strokeWidth="1.5" strokeDasharray="3 3" opacity="0.65" />
       <text x={x(tookLead)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={GOLD} fontWeight="600">Took lead</text>
-      {/* CPL - dashed gray */}
-      <path d={toPath(cpl)} fill="none" stroke={cplColor} strokeWidth="2" strokeDasharray="5 4" />
-      {/* leads per clinic - solid gold */}
-      <path d={toPath(lpc)} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {/* participating clinics - dashed gray */}
+      <path d={toPath(clinics)} fill="none" stroke={clinicColor} strokeWidth="2" strokeDasharray="5 4" />
+      {/* leads - solid gold */}
+      <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
       {yearTicks.map((t) => (
         <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
           {t.label}
@@ -1035,7 +1035,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                     fontWeight: 500,
                   }}
                 >
-                  Leads per clinic vs. cost per lead · indexed to start
+                  Leads vs. participating clinics · indexed to start
                 </div>
                 <div
                   style={{
@@ -1048,11 +1048,11 @@ function CaseStudyCard({ study, index, featured = false }) {
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: MEDIUM }}>
                     <span style={{ width: 16, height: 2.5, background: GOLD, display: "inline-block" }} />
-                    Leads per clinic
+                    Leads
                   </span>
                   <span style={{ display: "flex", alignItems: "center", gap: 6, color: LIGHT_TEXT }}>
                     <span style={{ width: 16, height: 0, borderTop: "2px dashed #9aa6ad", display: "inline-block" }} />
-                    Cost per lead
+                    Participating clinics
                   </span>
                 </div>
                 <TurnaroundChart />
@@ -1065,7 +1065,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                     marginTop: 4,
                   }}
                 >
-                  After taking lead, per-clinic leads climbed and cost per lead fell as the new structure matured over the following two quarters.
+                  Both fell as clinics moved to a competing agency. After we took lead, leads climbed to record highs while the clinic count stayed below its former peak - each clinic producing more.
                 </div>
               </div>
             )}
