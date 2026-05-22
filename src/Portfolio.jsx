@@ -199,6 +199,7 @@ const consultingCaseStudies = [
       { metric: "300+", label: "Page 1 keyword rankings" },
       { metric: "~50%", label: "Revenue now from web-driven leads" },
     ],
+    chart: "growth",
     testimonial: {
       quote:
         "I used to get three to four sales a year off my website. Now, three to seven local people call me per week. Two to four people per week call me from out of town. My sales have been impacted greatly by these internet-driven clients. The sales from these calls vary from week to week but the total can be up to 50 percent of my business.",
@@ -217,10 +218,11 @@ const consultingCaseStudies = [
       "Developed monthly blog content and added on-site elements like a review carousel",
     ],
     results: [
-      { metric: "25%", label: "Increase in daily leads" },
-      { metric: "60+", label: "Monthly website leads" },
-      { metric: "280", label: "Monthly calls from directories" },
+      { metric: "25%", label: "Increase in business (≈10 more calls per day)" },
+      { metric: "60+", label: "Monthly leads to the website" },
+      { metric: "280", label: "Monthly calls from Google & Yelp" },
     ],
+    chart: "keywords",
   },
   {
     tag: "SEO · Commercial Services",
@@ -683,6 +685,111 @@ function ComparisonChart() {
   );
 }
 
+// Multi-year traffic growth - annual visitors (real Calla Gold GA data)
+function GrowthChart() {
+  const data = [
+    { year: 2012, v: 54490 },
+    { year: 2013, v: 198312 },
+    { year: 2016, v: 1305060 },
+    { year: 2017, v: 1012917 },
+  ];
+  const years = [2012, 2013, 2014, 2015, 2016, 2017];
+  const W = 600;
+  const H = 250;
+  const padL = 40;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 1400000;
+
+  const x = (yr) => padL + ((yr - 2012) / (2017 - 2012)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const path = data.map((d, i) => `${i === 0 ? "M" : "L"} ${x(d.year).toFixed(1)} ${y(d.v).toFixed(1)}`).join(" ");
+  const fmt = (v) => (v >= 1000000 ? `${(v / 1000000).toFixed(1)}M` : `${Math.round(v / 1000)}K`);
+  const axis = "#9a958c";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Annual website visitors growing from 2012 to 2017"
+    >
+      {[0, 500000, 1000000].map((v) => (
+        <g key={v}>
+          <line x1={padL} y1={y(v)} x2={W - padR} y2={y(v)} stroke={axis} strokeWidth="1" opacity="0.15" />
+          <text x={padL - 6} y={y(v) + 3} textAnchor="end" fontSize="9" fill={axis}>{fmt(v)}</text>
+        </g>
+      ))}
+      <path d={path} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {data.map((d) => (
+        <circle key={d.year} cx={x(d.year)} cy={y(d.v)} r="3.5" fill={GOLD} />
+      ))}
+      {years.map((yr) => (
+        <text key={yr} x={x(yr)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>{yr}</text>
+      ))}
+    </svg>
+  );
+}
+
+// Multi-year traffic growth end
+
+// Organic keyword growth - faithful redraw of Ahrefs trend (real Camp Canine data)
+function KeywordChart() {
+  const data = [
+    { t: 2016, v: 0 },
+    { t: 2018, v: 1 },
+    { t: 2018.75, v: 400 },
+    { t: 2019.5, v: 470 },
+    { t: 2020.1, v: 410 },
+    { t: 2020.5, v: 726 },
+  ];
+  const years = [2016, 2017, 2018, 2019, 2020];
+  const W = 600;
+  const H = 250;
+  const padL = 36;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxV = 800;
+  const t0 = 2016;
+  const t1 = 2020.5;
+
+  const x = (t) => padL + ((t - t0) / (t1 - t0)) * plotW;
+  const y = (v) => padT + plotH - (v / maxV) * plotH;
+  const linePath = data.map((d, i) => `${i === 0 ? "M" : "L"} ${x(d.t).toFixed(1)} ${y(d.v).toFixed(1)}`).join(" ");
+  const areaPath = `${linePath} L ${x(data[data.length - 1].t).toFixed(1)} ${y(0)} L ${x(data[0].t).toFixed(1)} ${y(0)} Z`;
+  const axis = "#9a958c";
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      style={{ display: "block", fontFamily: "'DM Sans', sans-serif" }}
+      role="img"
+      aria-label="Organic keywords growing from near zero in 2018 to 726"
+    >
+      {[0, 250, 500, 750].map((v) => (
+        <g key={v}>
+          <line x1={padL} y1={y(v)} x2={W - padR} y2={y(v)} stroke={axis} strokeWidth="1" opacity="0.15" />
+          <text x={padL - 6} y={y(v) + 3} textAnchor="end" fontSize="9" fill={axis}>{v}</text>
+        </g>
+      ))}
+      <path d={areaPath} fill={GOLD} opacity="0.12" />
+      <path d={linePath} fill="none" stroke={GOLD} strokeWidth="2.5" />
+      {years.map((yr) => (
+        <text key={yr} x={x(yr)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>{yr}</text>
+      ))}
+    </svg>
+  );
+}
+// Organic keyword growth end
+
 // Turnaround - leads recover to record highs while clinic count stays below peak (real TJ data, anonymized)
 function TurnaroundChart() {
   const leads = [100, 88, 95, 90, 82, 89, 95, 101, 87, 74, 71, 69, 74, 77, 84, 81, 81, 84, 106, 127, 127];
@@ -1032,6 +1139,82 @@ function CaseStudyCard({ study, index, featured = false }) {
                 >
                   — {study.testimonial.attribution}
                 </p>
+              </div>
+            )}
+
+            {study.chart === "keywords" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 8,
+                    fontWeight: 500,
+                  }}
+                >
+                  Organic keywords ranked · Ahrefs
+                </div>
+                <KeywordChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Organic keywords ranked grew from roughly 1 in early 2018 to 726, climbing as the SEO work took hold (trend traced from Ahrefs).
+                </div>
+              </div>
+            )}
+
+            {study.chart === "growth" && (
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: "20px 16px 8px",
+                  background: `${NAVY}05`,
+                  borderRadius: 6,
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    marginBottom: 8,
+                    fontWeight: 500,
+                  }}
+                >
+                  Annual website visitors
+                </div>
+                <GrowthChart />
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.72rem",
+                    color: LIGHT_TEXT,
+                    fontStyle: "italic",
+                    marginTop: 4,
+                  }}
+                >
+                  Visitors grew roughly 20x over five years (peaking near 1.3M in 2016). Points mark the years with reported figures.
+                </div>
               </div>
             )}
 
