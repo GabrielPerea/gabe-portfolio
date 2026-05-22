@@ -252,11 +252,6 @@ const analyses = [
       { metric: "+17%", label: "Net lift in NDCs" },
       { metric: "−9.5%", label: "CPL improvement beyond market trends" },
     ],
-    liftData: [
-      { label: "Paid Search leads", value: 28, display: "+28%" },
-      { label: "New patients (NDCs)", value: 17, display: "+17%" },
-      { label: "CPL improvement", value: 9.5, display: "−9.5%" },
-    ],
   },
   {
     tag: "Daypart Test",
