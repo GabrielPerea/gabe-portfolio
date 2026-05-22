@@ -239,6 +239,23 @@ const consultingCaseStudies = [
       { metric: "60+", label: "Directory listings created" },
     ],
   },
+  {
+    tag: "Nonprofit · Foster Care",
+    title: "Built and scaled the lead-generation system for a foster-care nonprofit",
+    challenge:
+      "Alternative Family Services (AFS), a foster-care and adoption nonprofit, needed to recruit resource (foster) parents through its website but had no conversion tracking and no real lead-capture funnel. Online was a negligible channel, with just 8 referrals in FY2017/18.",
+    actions: [
+      "Built conversion tracking and a resource-parent lead-capture funnel from scratch (ads to form to recruiter handoff to applicant follow-up)",
+      "Ran cost-effective foster-parent recruitment campaigns across Google Ads and Facebook/Instagram",
+      "Expanded lead capture over the years into donor recruitment and, alongside HR, new intern and volunteer forms",
+      "Delivered ongoing analytics reporting on demographics, geography, and device trends to refine targeting and spend",
+    ],
+    results: [
+      { metric: "7+ yrs", label: "Ongoing partnership since 2017" },
+      { metric: "$11.51", label: "Cost per foster-parent lead on paid social" },
+      { metric: "8.65%", label: "Google Ads lead conversion rate (≈$24 per lead)" },
+    ],
+  },
 ];
 
 const analyses = [
