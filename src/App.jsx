@@ -1,7 +1,2 @@
-import Portfolio from './Portfolio'
-
-function App() {
-  return <Portfolio />
-}
-
-export default App
+import Portfolio from './Portfolio.jsx'
+export default function App() { return <Portfolio /> }

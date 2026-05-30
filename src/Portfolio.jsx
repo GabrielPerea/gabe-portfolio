@@ -971,7 +971,16 @@ function CaseStudyCard({ study, index, featured = false }) {
   return (
     <FadeIn delay={index * 0.08}>
       <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
         onClick={() => setExpanded(!expanded)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setExpanded(!expanded);
+          }
+        }}
         style={{
           background: CARD_BG,
           border: `1px solid ${expanded ? NAVY : BORDER}`,
@@ -1746,7 +1755,14 @@ export default function Portfolio() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: flex !important; }
-          .hero-headshot { display: none !important; }
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-headshot {
+            order: -1;
+            justify-self: center;
+            width: 120px !important;
+            height: 120px !important;
+            margin-bottom: 12px;
+          }
         }
         @media (min-width: 769px) {
           .mobile-toggle { display: none !important; }
@@ -1884,7 +1900,7 @@ export default function Portfolio() {
           margin: "0 auto",
         }}
       >
-        <div style={{
+        <div className="hero-grid" style={{
           animation: "fadeUp 0.8s ease",
           display: "grid",
           gridTemplateColumns: "1fr auto",
