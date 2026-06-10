@@ -1063,9 +1063,10 @@ function CaseStudyCard({ study, index, featured = false }) {
           ))}
         </div>
 
-        {expanded && (
+        {(
           <div
             style={{
+              display: expanded ? "block" : "none",
               marginTop: 20,
               paddingTop: 20,
               borderTop: `1px solid ${BORDER}`,
@@ -1946,8 +1947,9 @@ export default function Portfolio() {
               }}
             >
               10+ years working with franchise networks, national brands, and
-              DTC e-commerce. $1M+ in monthly ad spend managed since 2020.
-              Based in Santa Barbara, CA.
+              DTC e-commerce. $1M+ in monthly ad spend managed since 2020, plus
+              an independent consulting practice running since 2013. Based in
+              Santa Barbara, CA.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button
@@ -2634,8 +2636,10 @@ export default function Portfolio() {
               lineHeight: 1.6,
             }}
           >
-            Open to conversations about new roles, consulting work, or
-            interesting problems.
+            Open to conversations about new roles, consulting engagements, or
+            interesting problems. Consulting work spans Google Ads, SEO,
+            analytics, and web - typically on a monthly retainer or
+            project basis, async-friendly.
           </p>
           <div
             style={{
