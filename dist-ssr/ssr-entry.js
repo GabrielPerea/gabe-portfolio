@@ -16,16 +16,16 @@ const agencyCaseStudies = [
   {
     tag: "Franchise · Healthcare · Turnaround",
     title: "Co-led the turnaround of a national chiropractic account through a leadership gap",
-    challenge: "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). A fellow strategist and I took on the turnaround together.",
+    challenge: "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). Shianne Ybarra and I took on the turnaround together.",
     actions: [
       "Rebuilt the paid search account structure from the ground up",
       "Reconfigured Performance Max to optimize for store visits instead of lead forms, which had been generating spam through Discovery placements and cannibalizing Search",
       "Won clinics back into the program and grew per-clinic lead volume as the new structure matured over the following two quarters",
-      "Drove leads and new-customer volume to record highs for the account by early 2026"
+      "Validated the gains with an attribution study that separated true lift from leads being recredited between channels"
     ],
     results: [
-      { metric: "+43%", label: "Leads per clinic during the turnaround" },
-      { metric: "−22%", label: "Cost per lead from its peak" },
+      { metric: "+19%", label: "Leads per clinic, year over year (attribution-adjusted)" },
+      { metric: "+20%", label: "New patients per clinic, year over year (attribution-adjusted)" },
       { metric: "+25%", label: "Clinics won back into the program (683 → 857)" }
     ],
     chart: "turnaround",
@@ -711,15 +711,15 @@ function TurnaroundChart() {
       children: [
         /* @__PURE__ */ jsx("line", { x1: padL, y1: y(100), x2: W - padR, y2: y(100), stroke: axis, strokeWidth: "1", opacity: "0.25", strokeDasharray: "2 3" }),
         /* @__PURE__ */ jsx("text", { x: padL - 6, y: y(100) + 3, textAnchor: "end", fontSize: "9", fill: axis, children: "100" }),
-        /* @__PURE__ */ jsx("rect", { x: x(13), y: padT, width: x(15) - x(13), height: plotH, fill: GOLD, opacity: "0.09" }),
+        /* @__PURE__ */ jsx("rect", { x: x(13), y: padT, width: x(16) - x(13), height: plotH, fill: GOLD, opacity: "0.09" }),
         /* @__PURE__ */ jsx("line", { x1: x(tookLead), y1: padT - 4, x2: x(tookLead), y2: padT + plotH, stroke: GOLD, strokeWidth: "1.5", strokeDasharray: "3 3", opacity: "0.65" }),
         /* @__PURE__ */ jsx("line", { x1: x(18), y1: padT - 4, x2: x(18), y2: padT + plotH, stroke: clinicColor, strokeWidth: "1.5", strokeDasharray: "3 3", opacity: "0.7" }),
         /* @__PURE__ */ jsx("path", { d: toPath(clinics), fill: "none", stroke: clinicColor, strokeWidth: "2", strokeDasharray: "5 4" }),
         /* @__PURE__ */ jsx("path", { d: toPath(leads), fill: "none", stroke: GOLD, strokeWidth: "2.5" }),
         /* @__PURE__ */ jsx("text", { x: x(tookLead), y: padT - 10, textAnchor: "middle", fontSize: "9.5", fill: GOLD, fontWeight: "600", children: "Took lead" }),
-        /* @__PURE__ */ jsx("text", { x: (x(13) + x(15)) / 2, y: padT + plotH - 74, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "New search" }),
-        /* @__PURE__ */ jsx("text", { x: (x(13) + x(15)) / 2, y: padT + plotH - 63, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "structure" }),
-        /* @__PURE__ */ jsx("text", { x: (x(13) + x(15)) / 2, y: padT + plotH - 52, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "(batched, Sep–Nov)" }),
+        /* @__PURE__ */ jsx("text", { x: (x(13) + x(16)) / 2, y: padT + plotH - 74, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "New search" }),
+        /* @__PURE__ */ jsx("text", { x: (x(13) + x(16)) / 2, y: padT + plotH - 63, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "structure" }),
+        /* @__PURE__ */ jsx("text", { x: (x(13) + x(16)) / 2, y: padT + plotH - 52, textAnchor: "middle", fontSize: "9", fill: LIGHT_TEXT, children: "(batched, Sep–Dec)" }),
         /* @__PURE__ */ jsx("text", { x: x(18), y: padT - 10, textAnchor: "middle", fontSize: "9.5", fill: NAVY_LIGHT, fontWeight: "600", children: "GBP optimizations" }),
         yearTicks.map((t) => /* @__PURE__ */ jsx("text", { x: x(t.i), y: H - 14, textAnchor: "middle", fontSize: "10", fill: axis, children: t.label }, t.label))
       ]
@@ -835,7 +835,7 @@ function LiftBars({ data }) {
   ] }, i)) });
 }
 function CaseStudyCard({ study, index, featured = false }) {
-  const [expanded, setExpanded] = useState(featured);
+  const [expanded, setExpanded] = useState(false);
   return /* @__PURE__ */ jsx(FadeIn, { delay: index * 0.08, children: /* @__PURE__ */ jsxs(
     "div",
     {
@@ -939,6 +939,24 @@ function CaseStudyCard({ study, index, featured = false }) {
             ))
           }
         ),
+        /* @__PURE__ */ jsxs("div", { style: {
+          marginTop: 16,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.78rem",
+          fontWeight: 500,
+          color: NAVY_LIGHT,
+          display: "flex",
+          alignItems: "center",
+          gap: 6
+        }, children: [
+          expanded ? "Hide details" : "View details",
+          /* @__PURE__ */ jsx("span", { style: {
+            display: "inline-block",
+            transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s ease",
+            fontSize: "0.7rem"
+          }, children: "▾" })
+        ] }),
         /* @__PURE__ */ jsxs(
           "div",
           {
@@ -1182,7 +1200,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                       }
                     ),
                     /* @__PURE__ */ jsx(TurnaroundChart, {}),
-                    /* @__PURE__ */ jsx(
+                    /* @__PURE__ */ jsxs(
                       "div",
                       {
                         style: {
@@ -1192,7 +1210,22 @@ function CaseStudyCard({ study, index, featured = false }) {
                           fontStyle: "italic",
                           marginTop: 4
                         },
-                        children: "Both fell as clinics moved to a competing agency. We rolled out a new search structure in batches (Sep–Nov 2025); in February 2026, a fellow strategist designed account-wide Google Business Profile optimizations that the specialist team executed. Leads then climbed to record highs while the clinic count stayed below its former peak - each clinic producing more."
+                        children: [
+                          "Both fell as clinics moved to a competing agency. We rebuilt the search structure in batches (Sep–Dec 2025); in February 2026,",
+                          " ",
+                          /* @__PURE__ */ jsx(
+                            "a",
+                            {
+                              href: "https://www.linkedin.com/in/shianne-ybarra-a62856191/",
+                              target: "_blank",
+                              rel: "noopener noreferrer",
+                              style: { color: NAVY_LIGHT, textDecoration: "underline", fontWeight: 500 },
+                              children: "Shianne Ybarra"
+                            }
+                          ),
+                          " ",
+                          "designed account-wide Google Business Profile optimizations that the specialist team executed. Reported Search leads then jumped, though much of that reflected leads being correctly reattributed from Organic rather than net-new volume - the true, attribution-adjusted lift was a more modest but durable ~19% per clinic year over year."
+                        ]
                       }
                     )
                   ]
@@ -2525,6 +2558,45 @@ function Portfolio() {
                                 /* @__PURE__ */ jsx("div", { children: "AS, Criminology - Santa Barbara City College" }),
                                 /* @__PURE__ */ jsx("div", { children: "AA, Social and Behavioral Sciences - Santa Barbara City College" })
                               ]
+                            }
+                          )
+                        ]
+                      }
+                    ),
+                    /* @__PURE__ */ jsxs(
+                      "div",
+                      {
+                        style: {
+                          marginTop: 24,
+                          paddingTop: 20,
+                          borderTop: `1px solid ${BORDER}`
+                        },
+                        children: [
+                          /* @__PURE__ */ jsx(
+                            "h3",
+                            {
+                              style: {
+                                fontFamily: "'DM Sans', sans-serif",
+                                fontSize: "0.78rem",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                color: LIGHT_TEXT,
+                                marginBottom: 12,
+                                fontWeight: 500
+                              },
+                              children: "Outside work"
+                            }
+                          ),
+                          /* @__PURE__ */ jsx(
+                            "div",
+                            {
+                              style: {
+                                fontFamily: "'DM Sans', sans-serif",
+                                fontSize: "0.82rem",
+                                color: MEDIUM,
+                                lineHeight: 1.6
+                              },
+                              children: "Long-distance Sierra mountaineering - summited Mt. Whitney via the High Sierra and John Muir trails, and joined the first group to summit Mt. Tyndall in the 2025 season. Competed in three amateur Muay Thai bouts, winning two."
                             }
                           )
                         ]

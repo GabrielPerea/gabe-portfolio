@@ -20,16 +20,16 @@ const agencyCaseStudies = [
     tag: "Franchise · Healthcare · Turnaround",
     title: "Co-led the turnaround of a national chiropractic account through a leadership gap",
     challenge:
-      "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). A fellow strategist and I took on the turnaround together.",
+      "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). Shianne Ybarra and I took on the turnaround together.",
     actions: [
       "Rebuilt the paid search account structure from the ground up",
       "Reconfigured Performance Max to optimize for store visits instead of lead forms, which had been generating spam through Discovery placements and cannibalizing Search",
       "Won clinics back into the program and grew per-clinic lead volume as the new structure matured over the following two quarters",
-      "Drove leads and new-customer volume to record highs for the account by early 2026",
+      "Validated the gains with an attribution study that separated true lift from leads being recredited between channels",
     ],
     results: [
-      { metric: "+43%", label: "Leads per clinic during the turnaround" },
-      { metric: "−22%", label: "Cost per lead from its peak" },
+      { metric: "+19%", label: "Leads per clinic, year over year (attribution-adjusted)" },
+      { metric: "+20%", label: "New patients per clinic, year over year (attribution-adjusted)" },
       { metric: "+25%", label: "Clinics won back into the program (683 → 857)" },
     ],
     chart: "turnaround",
@@ -826,8 +826,8 @@ function TurnaroundChart() {
     >
       <line x1={padL} y1={y(100)} x2={W - padR} y2={y(100)} stroke={axis} strokeWidth="1" opacity="0.25" strokeDasharray="2 3" />
       <text x={padL - 6} y={y(100) + 3} textAnchor="end" fontSize="9" fill={axis}>100</text>
-      {/* Sep-Nov 2025 search structure rollout band */}
-      <rect x={x(13)} y={padT} width={x(15) - x(13)} height={plotH} fill={GOLD} opacity="0.09" />
+      {/* Sep-Dec 2025 search structure rollout band */}
+      <rect x={x(13)} y={padT} width={x(16) - x(13)} height={plotH} fill={GOLD} opacity="0.09" />
       {/* took lead marker (behind lines) */}
       <line x1={x(tookLead)} y1={padT - 4} x2={x(tookLead)} y2={padT + plotH} stroke={GOLD} strokeWidth="1.5" strokeDasharray="3 3" opacity="0.65" />
       {/* Feb 2026 GBP optimizations marker (behind lines) */}
@@ -838,9 +838,9 @@ function TurnaroundChart() {
       <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
       {/* annotation labels (on top) */}
       <text x={x(tookLead)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={GOLD} fontWeight="600">Took lead</text>
-      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 74} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>New search</text>
-      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 63} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>structure</text>
-      <text x={(x(13) + x(15)) / 2} y={padT + plotH - 52} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>(batched, Sep–Nov)</text>
+      <text x={(x(13) + x(16)) / 2} y={padT + plotH - 74} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>New search</text>
+      <text x={(x(13) + x(16)) / 2} y={padT + plotH - 63} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>structure</text>
+      <text x={(x(13) + x(16)) / 2} y={padT + plotH - 52} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>(batched, Sep–Dec)</text>
       <text x={x(18)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={NAVY_LIGHT} fontWeight="600">GBP optimizations</text>
       {yearTicks.map((t) => (
         <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
@@ -967,7 +967,7 @@ function LiftBars({ data }) {
 }
 
 function CaseStudyCard({ study, index, featured = false }) {
-  const [expanded, setExpanded] = useState(featured);
+  const [expanded, setExpanded] = useState(false);
   return (
     <FadeIn delay={index * 0.08}>
       <div
@@ -1061,6 +1061,25 @@ function CaseStudyCard({ study, index, featured = false }) {
               </span>
             </div>
           ))}
+        </div>
+
+        <div style={{
+          marginTop: 16,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.78rem",
+          fontWeight: 500,
+          color: NAVY_LIGHT,
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+        }}>
+          {expanded ? "Hide details" : "View details"}
+          <span style={{
+            display: "inline-block",
+            transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s ease",
+            fontSize: "0.7rem",
+          }}>▾</span>
         </div>
 
         {(
@@ -1279,7 +1298,16 @@ function CaseStudyCard({ study, index, featured = false }) {
                     marginTop: 4,
                   }}
                 >
-                  Both fell as clinics moved to a competing agency. We rolled out a new search structure in batches (Sep–Nov 2025); in February 2026, a fellow strategist designed account-wide Google Business Profile optimizations that the specialist team executed. Leads then climbed to record highs while the clinic count stayed below its former peak - each clinic producing more.
+                  Both fell as clinics moved to a competing agency. We rebuilt the search structure in batches (Sep–Dec 2025); in February 2026,{" "}
+                  <a
+                    href="https://www.linkedin.com/in/shianne-ybarra-a62856191/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: NAVY_LIGHT, textDecoration: "underline", fontWeight: 500 }}
+                  >
+                    Shianne Ybarra
+                  </a>{" "}
+                  designed account-wide Google Business Profile optimizations that the specialist team executed. Reported Search leads then jumped, though much of that reflected leads being correctly reattributed from Organic rather than net-new volume - the true, attribution-adjusted lift was a more modest but durable ~19% per clinic year over year.
                 </div>
               </div>
             )}
@@ -2592,6 +2620,38 @@ export default function Portfolio() {
                   <div>BA, Psychology - Cal State Long Beach</div>
                   <div>AS, Criminology - Santa Barbara City College</div>
                   <div>AA, Social and Behavioral Sciences - Santa Barbara City College</div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  marginTop: 24,
+                  paddingTop: 20,
+                  borderTop: `1px solid ${BORDER}`,
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.78rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    color: LIGHT_TEXT,
+                    marginBottom: 12,
+                    fontWeight: 500,
+                  }}
+                >
+                  Outside work
+                </h3>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.82rem",
+                    color: MEDIUM,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Long-distance Sierra mountaineering - summited Mt. Whitney via the High Sierra and John Muir trails, and joined the first group to summit Mt. Tyndall in the 2025 season. Competed in three amateur Muay Thai bouts, winning two.
                 </div>
               </div>
             </div>
