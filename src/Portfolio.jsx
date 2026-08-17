@@ -318,7 +318,7 @@ const tools = [
 ];
 
 const specialties = [
-  "Performance Marketing Strategy",
+  "Paid Search Strategy",
   "Cross-Channel Media Planning",
   "Franchise & Multi-Location Scaling",
   "Marketing Automation",
@@ -1951,7 +1951,7 @@ export default function Portfolio() {
                 fontWeight: 600,
               }}
             >
-              Senior Performance Marketing Strategist
+              Sr. Paid Search Strategist
             </div>
             <h1
               style={{
@@ -2452,7 +2452,7 @@ export default function Portfolio() {
                 }}
               >
                 <p style={{ margin: 0 }}>
-                  I'm a senior performance marketing strategist based in Santa
+                  I'm a senior paid search strategist based in Santa
                   Barbara, CA. I work on paid media strategy, campaign
                   operations, and marketing automation for franchise networks,
                   national brands, and DTC e-commerce. Over a decade in the

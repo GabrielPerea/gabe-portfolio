@@ -294,7 +294,7 @@ const tools = [
   "Yext"
 ];
 const specialties = [
-  "Performance Marketing Strategy",
+  "Paid Search Strategy",
   "Cross-Channel Media Planning",
   "Franchise & Multi-Location Scaling",
   "Marketing Automation",
@@ -1863,7 +1863,7 @@ function Portfolio() {
                   marginBottom: 16,
                   fontWeight: 600
                 },
-                children: "Senior Performance Marketing Strategist"
+                children: "Sr. Paid Search Strategist"
               }
             ),
             /* @__PURE__ */ jsx(
@@ -2379,7 +2379,7 @@ function Portfolio() {
                       marginTop: 12
                     },
                     children: [
-                      /* @__PURE__ */ jsx("p", { style: { margin: 0 }, children: "I'm a senior performance marketing strategist based in Santa Barbara, CA. I work on paid media strategy, campaign operations, and marketing automation for franchise networks, national brands, and DTC e-commerce. Over a decade in the field; managing $1M+ in monthly ad spend since 2020." }),
+                      /* @__PURE__ */ jsx("p", { style: { margin: 0 }, children: "I'm a senior paid search strategist based in Santa Barbara, CA. I work on paid media strategy, campaign operations, and marketing automation for franchise networks, national brands, and DTC e-commerce. Over a decade in the field; managing $1M+ in monthly ad spend since 2020." }),
                       /* @__PURE__ */ jsx("p", { style: { margin: 0 }, children: "Most of my work sits at the intersection of execution and analysis - running paid media programs, building the measurement and automation systems behind them, and digging into the data to understand what's actually working." }),
                       /* @__PURE__ */ jsx("p", { style: { margin: 0 }, children: "I also mentor junior team members and lead internal training on things like tCPA strategy, conversion tracking, Google Tag Manager, JavaScript for paid search, and budget forecasting." }),
                       /* @__PURE__ */ jsx("p", { style: { margin: 0, color: LIGHT_TEXT }, children: "Outside of paid media, I work on side projects involving systems, research, and writing. They keep me sharp on the parts of the job that aren't strictly platform mechanics." })
