@@ -30,7 +30,7 @@ const agencyCaseStudies = [
     results: [
       { metric: "+19%", label: "Leads per clinic, year over year (attribution-adjusted)" },
       { metric: "+20%", label: "New patients per clinic, year over year (attribution-adjusted)" },
-      { metric: "+25%", label: "Clinics won back into the program (683 → 857)" },
+      { metric: "+18%", label: "Clinics won back into the program (684 → 806)" },
     ],
     chart: "turnaround",
     featured: true,
@@ -66,9 +66,9 @@ const agencyCaseStudies = [
       "Scaled the program across new locations without diluting per-location lead volume",
     ],
     results: [
-      { metric: "+72%", label: "Lead volume since launch (+131% at holiday peak)" },
-      { metric: "−33%", label: "Cost per lead since launch" },
-      { metric: "67%", label: "Below industry CPL benchmark" },
+      { metric: "5,284", label: "New guests in the first 13 months" },
+      { metric: "−37%", label: "Cost per lead, launch month vs. month 13" },
+      { metric: "+41%", label: "Monthly lead volume, year over year" },
     ],
     chart: "launch",
     featured: true,
@@ -124,7 +124,7 @@ const agencyCaseStudies = [
     results: [
       { metric: "Held", label: "Per-studio lead volume as the managed program shrank ~85%" },
       { metric: "~44%", label: "Lead-to-customer rate, up from ~35% (peaks to 59%)" },
-      { metric: "Stable", label: "CPL maintained despite lost scale" },
+      { metric: "~$33", label: "CPL in 2026, near 2022's ~$30, on ~87% less monthly spend" },
     ],
     chart: "resilience",
   },
@@ -581,10 +581,11 @@ function ResilienceChart() {
 
 // Launch trajectory - leads up vs CPL down, indexed to launch month (anonymized)
 function LaunchChart() {
-  const months = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
-  // Indexed to launch month = 100
-  const leads = [100, 130, 127, 154, 191, 231, 178, 167, 174, 172];
-  const cpl = [100, 78, 91, 90, 86, 80, 62, 65, 67, 67];
+  const months = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
+  const ticks = [{ i: 0, label: "Jul 2025", anchor: "start" }, { i: 6, label: "Jan 2026" }, { i: 12, label: "Jul 2026", anchor: "end" }];
+  // Indexed to launch month = 100 (full first 13 months)
+  const leads = [100, 130, 127, 154, 191, 232, 178, 167, 174, 172, 174, 138, 141];
+  const cpl = [100, 78, 91, 90, 86, 80, 61, 65, 67, 67, 67, 64, 63];
 
   const W = 600;
   const H = 250;
@@ -620,9 +621,9 @@ function LaunchChart() {
       {/* Leads - solid gold, rising */}
       <path d={toPath(leads)} fill="none" stroke={GOLD} strokeWidth="2.5" />
       {/* month labels */}
-      {months.map((m, i) => (
-        <text key={i} x={x(i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
-          {m}
+      {ticks.map((t) => (
+        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor={t.anchor || "middle"} fontSize="10" fill={axis}>
+          {t.label}
         </text>
       ))}
     </svg>
@@ -792,10 +793,12 @@ function KeywordChart() {
 
 // Turnaround - leads recover to record highs while clinic count stays below peak (real TJ data, anonymized)
 function TurnaroundChart() {
-  const leads = [100, 88, 95, 90, 82, 89, 95, 101, 87, 74, 71, 69, 74, 77, 84, 81, 81, 84, 106, 127, 127];
-  const clinics = [100, 100, 101, 101, 101, 102, 102, 103, 97, 79, 80, 75, 77, 80, 83, 85, 87, 87, 87, 92, 94];
+  // Leads are attribution-adjusted from Feb 2026 onward: -4 leads/clinic that the
+  // Feb GBP work caused to be reattributed from Organic (per impact study). Data through Jul 2026.
+  const leads = [100, 88, 94, 89, 81, 89, 94, 99, 86, 73, 71, 68, 73, 77, 83, 80, 80, 85, 89, 109, 107, 97, 101, 96];
+  const clinics = [100, 100, 101, 101, 101, 102, 103, 103, 97, 79, 80, 75, 77, 80, 83, 85, 87, 87, 87, 92, 94, 90, 94, 88];
   const tookLead = 12; // Aug 2025
-  const yearTicks = [{ i: 0, label: "Aug 2024" }, { i: 17, label: "Jan 2026" }];
+  const yearTicks = [{ i: 0, label: "Aug 2024" }, { i: 12, label: "Aug 2025" }, { i: 23, label: "Jul 2026", anchor: "end" }];
 
   const W = 600;
   const H = 262;
@@ -843,7 +846,7 @@ function TurnaroundChart() {
       <text x={(x(13) + x(16)) / 2} y={padT + plotH - 52} textAnchor="middle" fontSize="9" fill={LIGHT_TEXT}>(batched, Sep–Dec)</text>
       <text x={x(18)} y={padT - 10} textAnchor="middle" fontSize="9.5" fill={NAVY_LIGHT} fontWeight="600">GBP optimizations</text>
       {yearTicks.map((t) => (
-        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor="middle" fontSize="10" fill={axis}>
+        <text key={t.label} x={x(t.i)} y={H - 14} textAnchor={t.anchor || "middle"} fontSize="10" fill={axis}>
           {t.label}
         </text>
       ))}
@@ -1307,7 +1310,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                   >
                     Shianne Ybarra
                   </a>{" "}
-                  designed account-wide Google Business Profile optimizations that the specialist team executed. Reported Search leads then jumped, though much of that reflected leads being correctly reattributed from Organic rather than net-new volume - the true, attribution-adjusted lift was a more modest but durable ~19% per clinic year over year.
+                  designed account-wide Google Business Profile optimizations that the specialist team executed. The leads line here is attribution-adjusted: reported Search leads jumped more steeply, but much of that was volume correctly reattributed from Organic, so this shows the true net lift of roughly 19% per clinic year over year. Through July 2026, adjusted lead volume held near the pre-decline baseline on roughly 12% fewer clinics.
                 </div>
               </div>
             )}
