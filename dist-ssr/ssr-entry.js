@@ -15,7 +15,9 @@ const BORDER = "#e8e6e1";
 const agencyCaseStudies = [
   {
     tag: "Franchise · Healthcare · Turnaround",
-    title: "Co-led the turnaround of a national chiropractic account through a leadership gap",
+    slug: "chiropractic-turnaround",
+    title: "Co-led the turnaround of a national chiropractic account",
+    chips: ["Leadership transition", "Account rebuild", "Attribution study"],
     challenge: "A leadership transition left the team gutted - from five people down to two - just as the account was sliding (leads falling, cost per lead climbing) and corporate moved a large share of locations to a competing agency (participating clinics dropped from ~940 to ~680). Shianne Ybarra and I took on the turnaround together.",
     actions: [
       "Rebuilt the paid search account structure from the ground up",
@@ -33,7 +35,9 @@ const agencyCaseStudies = [
   },
   {
     tag: "Franchise · Wireless Retail",
-    title: "Managed a multi-year paid media program for a national wireless retail franchise",
+    slug: "wireless-incrementality",
+    title: "Proved incremental impact for a national wireless retailer",
+    chips: ["Test vs. control", "Store-level measurement", "Multi-year program"],
     challenge: "A national wireless retail franchise ran paid media across a subset of participating store locations, with hundreds of non-participating locations acting as a natural control. The program needed to prove it was driving incremental in-store activations and upgrades, not just spending budget.",
     actions: [
       "Managed paid media across participating locations and measured per-store performance against non-participating stores",
@@ -51,7 +55,9 @@ const agencyCaseStudies = [
   },
   {
     tag: "Franchise · Fitness",
+    slug: "fitness-launch",
     title: "Launched paid media for a boutique fitness franchise from zero",
+    chips: ["Zero-to-one launch", "Seasonal scaling", "Efficiency"],
     challenge: "A boutique fitness franchise had no paid media presence and needed to drive lead volume from scratch while scaling to new locations, in a category with notoriously high CPLs.",
     actions: [
       "Built campaign architecture, conversion tracking, and budget pacing from the ground up",
@@ -69,6 +75,7 @@ const agencyCaseStudies = [
   },
   {
     tag: "Franchise · Personal Care",
+    slug: "personal-care-scaleup",
     title: "More than doubled per-store lead volume for a personal-care franchise",
     challenge: "A personal-care franchise ran a small, underinvested paid program. The opportunity was to lift per-location lead volume and scale the program to more studios without letting cost per lead climb. (The account was later wound down as the parent company restructured - outside the program's control.)",
     actions: [
@@ -86,6 +93,7 @@ const agencyCaseStudies = [
   },
   {
     tag: "Franchise · Hair Care",
+    slug: "hair-care-scaleup",
     title: "Doubled per-store lead volume while scaling a hair-care franchise 3.5x",
     challenge: "A hair-care franchise was running a small paid program with room to grow. The opportunity was to lift per-location lead volume while scaling the program to many more studios and pushing cost per lead down. (The account was later wound down as the parent company restructured - outside the program's control.)",
     actions: [
@@ -99,11 +107,11 @@ const agencyCaseStudies = [
       { metric: "−22%", label: "Cost per lead during peak scaling" },
       { metric: "3.5x", label: "Studios scaled into the program" }
     ],
-    chart: "scaleup_hair",
-    featured: true
+    chart: "scaleup_hair"
   },
   {
     tag: "Franchise · Beauty",
+    slug: "beauty-resilience",
     title: "Held per-studio performance for a beauty franchise as its managed footprint shrank",
     challenge: "Over the engagement, the brand's parent company progressively pulled studios out of the agency-managed program - the managed book shrank from ~240 studios to ~35, driven by the parent's restructuring rather than performance. The goal was to keep the remaining studios performing and improve lead quality as the managed footprint shrank.",
     actions: [
@@ -121,6 +129,7 @@ const agencyCaseStudies = [
   },
   {
     tag: "Diagnostic · Bing Ads",
+    slug: "bing-tracking",
     title: "Resolved a conversion tracking failure across 400 Bing campaigns that had stumped prior attempts",
     challenge: "A national franchise's 400-campaign Bing account had a conversion tracking failure that broke tCPA optimization. Multiple prior escalation attempts had failed to resolve it. Budget pacing had collapsed to roughly 10% of target.",
     actions: [
@@ -136,7 +145,9 @@ const agencyCaseStudies = [
   },
   {
     tag: "Operations · Automation",
+    slug: "automation",
     title: "Engineered scalable campaign and QA systems for 800+ campaigns",
+    chips: ["Campaign builder", "QA automation", "Budget tooling"],
     challenge: "Manual campaign builds and QA across a massive franchise network created bottlenecks, errors, and inconsistent deployment standards.",
     actions: [
       "Built a custom Campaign Builder that auto-generates 100+ campaigns, keywords, and RSAs",
@@ -148,12 +159,14 @@ const agencyCaseStudies = [
       { metric: "60%", label: "Faster campaign deployment" },
       { metric: "50%", label: "QA workload reduction" },
       { metric: "800+", label: "Campaigns governed by automated tooling" }
-    ]
+    ],
+    featured: true
   }
 ];
 const consultingCaseStudies = [
   {
     tag: "DTC · E-Commerce",
+    slug: "dtc-subscriptions",
     title: "Scaled two national subscription brands through Google Ads and Meta optimization",
     challenge: "Two national subscription brands (wine and craft beer) needed to grow online orders while improving unit economics. The Google Ads account was running on tCPA with broad match keywords, limited negative keyword coverage, and product feeds that lacked keyword-optimized descriptions.",
     actions: [
@@ -172,6 +185,7 @@ const consultingCaseStudies = [
   },
   {
     tag: "SEO · Local Jewelry",
+    slug: "jewelry-seo",
     title: "Grew a custom jewelry brand from 5K to 100K+ monthly visitors",
     challenge: "A Santa Barbara jeweler had built steady traffic through blogging but needed a structured SEO and content strategy to break through the plateau.",
     actions: [
@@ -193,6 +207,7 @@ const consultingCaseStudies = [
   },
   {
     tag: "SEO · Local Services",
+    slug: "dog-boarding-seo",
     title: "Increased leads 25% for a 30-year-old dog boarding business",
     challenge: "A well-established dog boarding and daycare business had redesigned their site but had no analytics tracking and no SEO strategy in place. They needed more leads from search.",
     actions: [
@@ -210,6 +225,7 @@ const consultingCaseStudies = [
   },
   {
     tag: "SEO · Commercial Services",
+    slug: "refrigeration-seo",
     title: "Took a commercial refrigeration company from zero search traffic to steady lead flow",
     challenge: "After a site redesign, the business was receiving zero visits from search engines. The site's robots.txt was blocking all search engine crawlers, and the design wasn't mobile-responsive.",
     actions: [
@@ -226,6 +242,7 @@ const consultingCaseStudies = [
   },
   {
     tag: "Nonprofit · Foster Care",
+    slug: "nonprofit-leadgen",
     title: "Built and scaled the lead-generation system for a foster-care nonprofit",
     challenge: "Alternative Family Services (AFS), a foster-care and adoption nonprofit, needed to recruit resource (foster) parents through its website but had no conversion tracking and no real lead-capture funnel. Online was a negligible channel, with just 8 referrals in FY2017/18.",
     actions: [
@@ -243,7 +260,7 @@ const consultingCaseStudies = [
 ];
 const analyses = [
   {
-    tag: "Lift Study",
+    tag: "Incrementality",
     title: "Performance Max incrementality across a national chiropractic network",
     description: "A national chiropractic franchise tested Performance Max across a participating group of clinics versus a non-participating control. The analysis isolated PMax's incremental contribution by comparing test vs. control performance, checked for cannibalization by comparing Organic NDC growth across groups (similar rates ruled it out), and used YoY checks to confirm gains exceeded normal seasonality.",
     findings: [
@@ -253,7 +270,7 @@ const analyses = [
     ]
   },
   {
-    tag: "Daypart Test",
+    tag: "Experimentation",
     title: "Sunday schedule restriction and account-wide budget density",
     description: "A national chiropractic franchise's Google Ads account was running 24-hour Sunday schedules. The test restricted Sundays to an 8 AM-4 PM window. The follow-up analysis revealed something larger than the daypart finding itself: the Google Ads algorithm reallocated the saved Sunday budget into more efficient weekday inventory, lifting overall account performance.",
     findings: [
@@ -263,7 +280,7 @@ const analyses = [
     ]
   },
   {
-    tag: "Cross-Channel Correlation",
+    tag: "Cross-Channel Measurement",
     title: "Social activity correlates with measurable lift in Search performance",
     description: "Performance data across channels for a national franchise account revealed a consistent pattern between Social campaign activity and Search efficiency. In windows where Social was active, Search produced both more new customer leads and lower CPLs - the kind of holistic signal single-channel reporting tends to hide.",
     findings: [
@@ -272,37 +289,21 @@ const analyses = [
     ]
   }
 ];
-const tools = [
-  "Google Ads",
-  "Performance Max",
-  "Microsoft Ads",
-  "Meta Ads",
-  "LinkedIn Ads",
-  "Google Merchant Center",
-  "GA4",
-  "Google Tag Manager",
-  "Looker Studio",
-  "Optmyzr",
-  "Make (Integromat)",
-  "Monday.com",
-  "JavaScript (Ads Scripts)",
-  "Google Sheets",
-  "Ahrefs",
-  "SEMrush",
-  "Screaming Frog",
-  "Whitespark",
-  "Yext"
+const toolGroups = [
+  {
+    heading: "Paid Media",
+    items: ["Google Ads", "Performance Max", "Microsoft Ads", "Meta Ads", "LinkedIn Ads", "Google Merchant Center"]
+  },
+  {
+    heading: "Measurement & Automation",
+    items: ["GA4", "Google Tag Manager", "Looker Studio", "JavaScript (Ads Scripts)", "Make (Integromat)", "Optmyzr", "Google Sheets", "Monday.com"]
+  },
+  {
+    heading: "Strategy",
+    items: ["Incrementality", "Attribution Modeling", "Experimentation", "Budget Forecasting", "Franchise & Multi-Location Scaling", "Cross-Channel Planning"]
+  }
 ];
-const specialties = [
-  "Paid Search Strategy",
-  "Cross-Channel Media Planning",
-  "Franchise & Multi-Location Scaling",
-  "Marketing Automation",
-  "Attribution Modeling",
-  "Budget Forecasting",
-  "A/B Testing Frameworks",
-  "Team Mentorship & Training"
-];
+const alsoTools = ["Ahrefs", "SEMrush", "Screaming Frog", "Whitespark", "Yext", "WordPress"];
 const career = [
   {
     period: "2022 – Present",
@@ -835,26 +836,43 @@ function LiftBars({ data }) {
     )
   ] }, i)) });
 }
-function CaseStudyCard({ study, index, featured = false }) {
+function CaseStudyCard({ study, index, featured = false, compact = false }) {
   const [expanded, setExpanded] = useState(false);
+  const cardRef = useRef(null);
+  useEffect(() => {
+    if (typeof window !== "undefined" && study.slug && window.location.hash === `#${study.slug}`) {
+      setExpanded(true);
+      setTimeout(() => cardRef.current && cardRef.current.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+    }
+  }, []);
+  const toggle = () => {
+    const next = !expanded;
+    setExpanded(next);
+    if (next && study.slug && typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${study.slug}`);
+    }
+  };
   return /* @__PURE__ */ jsx(FadeIn, { delay: index * 0.08, children: /* @__PURE__ */ jsxs(
     "div",
     {
+      ref: cardRef,
+      id: study.slug,
       role: "button",
       tabIndex: 0,
       "aria-expanded": expanded,
-      onClick: () => setExpanded(!expanded),
+      onClick: toggle,
       onKeyDown: (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          setExpanded(!expanded);
+          toggle();
         }
       },
       style: {
         background: CARD_BG,
         border: `1px solid ${expanded ? NAVY : BORDER}`,
         borderRadius: 8,
-        padding: "clamp(20px, 3vw, 32px)",
+        padding: compact ? "16px clamp(16px, 2.5vw, 24px)" : "clamp(20px, 3vw, 32px)",
+        scrollMarginTop: 90,
         cursor: "pointer",
         transition: "box-shadow 0.3s ease, border-color 0.3s ease",
         boxShadow: expanded ? "0 8px 32px rgba(0,0,0,0.08)" : "0 1px 4px rgba(0,0,0,0.04)"
@@ -889,11 +907,36 @@ function CaseStudyCard({ study, index, featured = false }) {
             children: study.title
           }
         ),
+        study.chips && /* @__PURE__ */ jsx("div", { style: {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 8,
+          marginTop: 10,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.72rem",
+          color: LIGHT_TEXT
+        }, children: study.chips.map((c, ci) => /* @__PURE__ */ jsx("span", { style: {
+          padding: "3px 10px",
+          borderRadius: 999,
+          border: `1px solid ${BORDER}`,
+          letterSpacing: "0.02em"
+        }, children: c }, ci)) }),
+        compact && !expanded && /* @__PURE__ */ jsx("div", { style: {
+          marginTop: 10,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.82rem",
+          color: MEDIUM
+        }, children: study.results.slice(0, 2).map((r, i) => /* @__PURE__ */ jsxs("span", { children: [
+          i > 0 && /* @__PURE__ */ jsx("span", { style: { color: LIGHT_TEXT, margin: "0 8px" }, children: "·" }),
+          /* @__PURE__ */ jsx("span", { style: { fontFamily: "'Instrument Serif', Georgia, serif", color: NAVY, fontSize: "0.95rem" }, children: r.metric }),
+          " ",
+          /* @__PURE__ */ jsx("span", { style: { color: LIGHT_TEXT }, children: r.label })
+        ] }, i)) }),
         /* @__PURE__ */ jsx(
           "div",
           {
             style: {
-              display: "flex",
+              display: compact && !expanded ? "none" : "flex",
               flexWrap: "wrap",
               gap: "12px",
               marginTop: 16
@@ -916,7 +959,7 @@ function CaseStudyCard({ study, index, featured = false }) {
                     {
                       style: {
                         fontFamily: "'Instrument Serif', Georgia, serif",
-                        fontSize: "1.25rem",
+                        fontSize: featured ? "1.7rem" : "1.25rem",
                         color: NAVY,
                         fontWeight: 400
                       },
@@ -1669,8 +1712,8 @@ function Portfolio() {
   const navItems = [
     { id: "work", label: "Work" },
     { id: "insight", label: "Analysis" },
-    { id: "tools", label: "Tools" },
-    { id: "about", label: "About" }
+    { id: "about", label: "About" },
+    { href: "/Gabriel_Perea_Resume_2026.pdf", label: "Resume" }
   ];
   return /* @__PURE__ */ jsxs("div", { style: { background: BG, minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }, children: [
     /* @__PURE__ */ jsx("style", { children: `
@@ -1746,7 +1789,7 @@ function Portfolio() {
                   navItems.map((item) => /* @__PURE__ */ jsx(
                     "span",
                     {
-                      onClick: () => scrollTo(item.id),
+                      onClick: () => item.href ? window.open(item.href, "_blank") : scrollTo(item.id),
                       style: {
                         fontFamily: "'DM Sans', sans-serif",
                         fontSize: "0.82rem",
@@ -1759,7 +1802,7 @@ function Portfolio() {
                       onMouseLeave: (e) => e.target.style.color = MEDIUM,
                       children: item.label
                     },
-                    item.id
+                    item.label
                   )),
                   /* @__PURE__ */ jsx(
                     "span",
@@ -1818,7 +1861,7 @@ function Portfolio() {
               children: [...navItems, { id: "contact", label: "Contact" }].map((item) => /* @__PURE__ */ jsx(
                 "div",
                 {
-                  onClick: () => scrollTo(item.id),
+                  onClick: () => item.href ? window.open(item.href, "_blank") : scrollTo(item.id),
                   style: {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.92rem",
@@ -1828,7 +1871,7 @@ function Portfolio() {
                   },
                   children: item.label
                 },
-                item.id
+                item.label
               ))
             }
           )
@@ -1915,13 +1958,15 @@ function Portfolio() {
                   },
                   onMouseEnter: (e) => e.target.style.background = NAVY_DEEP,
                   onMouseLeave: (e) => e.target.style.background = NAVY,
-                  children: "View Case Studies"
+                  children: "View My Work"
                 }
               ),
               /* @__PURE__ */ jsx(
-                "button",
+                "a",
                 {
-                  onClick: () => scrollTo("contact"),
+                  href: "/Gabriel_Perea_Resume_2026.pdf",
+                  target: "_blank",
+                  rel: "noopener noreferrer",
                   style: {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.88rem",
@@ -1932,11 +1977,13 @@ function Portfolio() {
                     padding: "12px 28px",
                     borderRadius: 6,
                     cursor: "pointer",
-                    transition: "border-color 0.2s"
+                    transition: "border-color 0.2s",
+                    textDecoration: "none",
+                    display: "inline-block"
                   },
                   onMouseEnter: (e) => e.target.style.borderColor = NAVY,
                   onMouseLeave: (e) => e.target.style.borderColor = BORDER,
-                  children: "Contact"
+                  children: "Download Resume"
                 }
               )
             ] })
@@ -1985,7 +2032,7 @@ function Portfolio() {
             children: [
               /* @__PURE__ */ jsx(Stat, { number: "$1M+", label: "Monthly Ad Spend", delay: 0 }),
               /* @__PURE__ */ jsx(Stat, { number: "800+", label: "Active Campaigns", delay: 0.1 }),
-              /* @__PURE__ */ jsx(Stat, { number: "25+", label: "SMB Clients", delay: 0.2 }),
+              /* @__PURE__ */ jsx(Stat, { number: "25+", label: "Consulting Clients", delay: 0.2 }),
               /* @__PURE__ */ jsx(Stat, { number: "10+", label: "Years Experience", delay: 0.3 })
             ]
           }
@@ -2031,52 +2078,7 @@ function Portfolio() {
             paddingBottom: 8,
             borderBottom: `1px solid ${BORDER}`
           }, children: "Featured" }) }),
-          /* @__PURE__ */ jsx("div", { style: { display: "flex", flexDirection: "column", gap: 20, marginBottom: 44 }, children: agencyCaseStudies.filter((s) => s.featured).map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i, featured: true }, `featured-${i}`)) }),
-          /* @__PURE__ */ jsx(FadeIn, { children: /* @__PURE__ */ jsx("h3", { style: {
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.72rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: NAVY_LIGHT,
-            marginBottom: 16,
-            fontWeight: 600,
-            paddingBottom: 8,
-            borderBottom: `1px solid ${BORDER}`
-          }, children: "Agency — Paid Search & Operations" }) }),
-          /* @__PURE__ */ jsx(
-            "div",
-            {
-              style: {
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 440px), 1fr))",
-                gap: 20,
-                marginBottom: 40
-              },
-              children: agencyCaseStudies.filter((s) => !s.featured).map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i }, `agency-${i}`))
-            }
-          ),
-          /* @__PURE__ */ jsx(FadeIn, { children: /* @__PURE__ */ jsx("h3", { style: {
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.72rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: NAVY_LIGHT,
-            marginBottom: 16,
-            fontWeight: 600,
-            paddingBottom: 8,
-            borderBottom: `1px solid ${BORDER}`
-          }, children: "Independent Consulting — DTC, SEO & Web" }) }),
-          /* @__PURE__ */ jsx(
-            "div",
-            {
-              style: {
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 440px), 1fr))",
-                gap: 20
-              },
-              children: consultingCaseStudies.map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i }, `consult-${i}`))
-            }
-          )
+          /* @__PURE__ */ jsx("div", { style: { display: "flex", flexDirection: "column", gap: 20, marginBottom: 44 }, children: agencyCaseStudies.filter((s) => s.featured).map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i, featured: true }, `featured-${i}`)) })
         ]
       }
     ),
@@ -2103,7 +2105,7 @@ function Portfolio() {
                   marginBottom: 8,
                   fontWeight: 600
                 },
-                children: "Analysis"
+                children: "How I Think"
               }
             ),
             /* @__PURE__ */ jsx(
@@ -2117,7 +2119,7 @@ function Portfolio() {
                   marginBottom: 12,
                   letterSpacing: "-0.01em"
                 },
-                children: "Studies and investigations"
+                children: "Measurement over reported numbers"
               }
             ),
             /* @__PURE__ */ jsx(
@@ -2131,7 +2133,7 @@ function Portfolio() {
                   lineHeight: 1.6,
                   marginBottom: 36
                 },
-                children: "Tests and analyses across agency and independent work. Clients anonymized."
+                children: "I like digging past platform-reported performance to understand what actually caused a result - controlled tests, incrementality checks, and cross-channel reads on a national chiropractic network."
               }
             )
           ] }),
@@ -2266,6 +2268,93 @@ function Portfolio() {
     /* @__PURE__ */ jsxs(
       "section",
       {
+        id: "more-work",
+        style: {
+          padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px)",
+          maxWidth: 1100,
+          margin: "0 auto"
+        },
+        children: [
+          /* @__PURE__ */ jsxs(FadeIn, { children: [
+            /* @__PURE__ */ jsx(
+              "h2",
+              {
+                style: {
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  color: DARK,
+                  marginBottom: 8,
+                  fontWeight: 400
+                },
+                children: "More work."
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              "p",
+              {
+                style: {
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.92rem",
+                  color: LIGHT_TEXT,
+                  maxWidth: 680,
+                  lineHeight: 1.6,
+                  marginBottom: 36
+                },
+                children: "The rest of the portfolio across agency and independent consulting. Clients anonymized. Click any row for the full story."
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx(FadeIn, { children: /* @__PURE__ */ jsx("h3", { style: {
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: NAVY_LIGHT,
+            marginBottom: 16,
+            fontWeight: 600,
+            paddingBottom: 8,
+            borderBottom: `1px solid ${BORDER}`
+          }, children: "Agency — Paid Search & Operations" }) }),
+          /* @__PURE__ */ jsx(
+            "div",
+            {
+              style: {
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: 12,
+                marginBottom: 40
+              },
+              children: agencyCaseStudies.filter((s) => !s.featured).map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i, compact: true }, `agency-${i}`))
+            }
+          ),
+          /* @__PURE__ */ jsx(FadeIn, { children: /* @__PURE__ */ jsx("h3", { style: {
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: NAVY_LIGHT,
+            marginBottom: 16,
+            fontWeight: 600,
+            paddingBottom: 8,
+            borderBottom: `1px solid ${BORDER}`
+          }, children: "Independent Consulting — DTC, SEO & Web" }) }),
+          /* @__PURE__ */ jsx(
+            "div",
+            {
+              style: {
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: 12
+              },
+              children: consultingCaseStudies.map((study, i) => /* @__PURE__ */ jsx(CaseStudyCard, { study, index: i, compact: true }, `consult-${i}`))
+            }
+          )
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxs(
+      "section",
+      {
         id: "tools",
         style: {
           padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px)",
@@ -2291,53 +2380,71 @@ function Portfolio() {
               }
             )
           ] }),
-          /* @__PURE__ */ jsx(FadeIn, { delay: 0.1, children: /* @__PURE__ */ jsx("div", { style: { display: "flex", flexWrap: "wrap", gap: 8 }, children: tools.map((t, i) => /* @__PURE__ */ jsx(
-            "span",
-            {
-              style: {
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.82rem",
-                background: `${NAVY}08`,
-                color: NAVY,
-                padding: "8px 16px",
-                borderRadius: 20,
-                border: `1px solid ${NAVY}18`
-              },
-              children: t
-            },
-            i
-          )) }) }),
-          /* @__PURE__ */ jsx(FadeIn, { delay: 0.2, children: /* @__PURE__ */ jsx(
-            "div",
-            {
-              style: {
-                marginTop: 28,
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: 16
-              },
-              children: specialties.map((s, i) => /* @__PURE__ */ jsxs(
-                "div",
-                {
-                  style: {
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.85rem",
-                    color: MEDIUM,
-                    padding: "10px 0",
-                    borderBottom: `1px solid ${BORDER}`,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8
-                  },
-                  children: [
-                    /* @__PURE__ */ jsx("span", { style: { color: GOLD, fontSize: "0.6rem" }, children: "◆" }),
-                    s
-                  ]
+          /* @__PURE__ */ jsxs(FadeIn, { delay: 0.1, children: [
+            /* @__PURE__ */ jsx(
+              "div",
+              {
+                style: {
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+                  gap: "clamp(24px, 4vw, 48px)"
                 },
-                i
-              ))
-            }
-          ) })
+                children: toolGroups.map((g) => /* @__PURE__ */ jsxs("div", { children: [
+                  /* @__PURE__ */ jsx(
+                    "h3",
+                    {
+                      style: {
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "0.72rem",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        color: GOLD,
+                        fontWeight: 600,
+                        marginBottom: 14,
+                        paddingBottom: 8,
+                        borderBottom: `1px solid ${BORDER}`
+                      },
+                      children: g.heading
+                    }
+                  ),
+                  g.items.map((t) => /* @__PURE__ */ jsxs(
+                    "div",
+                    {
+                      style: {
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: "0.86rem",
+                        color: MEDIUM,
+                        padding: "7px 0",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8
+                      },
+                      children: [
+                        /* @__PURE__ */ jsx("span", { style: { color: GOLD, fontSize: "0.55rem" }, children: "◆" }),
+                        t
+                      ]
+                    },
+                    t
+                  ))
+                ] }, g.heading))
+              }
+            ),
+            /* @__PURE__ */ jsxs(
+              "div",
+              {
+                style: {
+                  marginTop: 28,
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.8rem",
+                  color: LIGHT_TEXT
+                },
+                children: [
+                  "Also: ",
+                  alsoTools.join(" · ")
+                ]
+              }
+            )
+          ] })
         ]
       }
     ),
@@ -2649,7 +2756,36 @@ function Portfolio() {
                 margin: "0 auto 28px",
                 lineHeight: 1.6
               },
-              children: "Open to conversations about new roles, consulting engagements, or interesting problems. Consulting work spans Google Ads, SEO, analytics, and web - typically on a monthly retainer or project basis, async-friendly."
+              children: "Open to conversations about new roles, consulting engagements, or interesting problems."
+            }
+          ),
+          /* @__PURE__ */ jsxs(
+            "div",
+            {
+              style: {
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+                gap: 20,
+                maxWidth: 720,
+                margin: "0 auto 32px",
+                textAlign: "left"
+              },
+              children: [
+                /* @__PURE__ */ jsxs("div", { style: { background: CARD_BG, border: `1px solid ${BORDER}`, borderRadius: 8, padding: "20px 24px" }, children: [
+                  /* @__PURE__ */ jsx("h3", { style: { fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD, fontWeight: 600, marginBottom: 10 }, children: "Hiring & Recruiting" }),
+                  /* @__PURE__ */ jsxs("p", { style: { fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: MEDIUM, lineHeight: 1.6, margin: 0 }, children: [
+                    "Senior paid search and performance marketing roles.",
+                    " ",
+                    /* @__PURE__ */ jsx("a", { href: "/Gabriel_Perea_Resume_2026.pdf", target: "_blank", rel: "noopener noreferrer", style: { color: NAVY, fontWeight: 500 }, children: "Resume" }),
+                    " · ",
+                    /* @__PURE__ */ jsx("a", { href: "https://linkedin.com/in/gabriel-perea", target: "_blank", rel: "noopener noreferrer", style: { color: NAVY, fontWeight: 500 }, children: "LinkedIn" })
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxs("div", { style: { background: CARD_BG, border: `1px solid ${BORDER}`, borderRadius: 8, padding: "20px 24px" }, children: [
+                  /* @__PURE__ */ jsx("h3", { style: { fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.1em", color: GOLD, fontWeight: 600, marginBottom: 10 }, children: "Consulting" }),
+                  /* @__PURE__ */ jsx("p", { style: { fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: MEDIUM, lineHeight: 1.6, margin: 0 }, children: "Google Ads, SEO, analytics, and web - typically on a monthly retainer or project basis, async-friendly." })
+                ] })
+              ]
             }
           ),
           /* @__PURE__ */ jsxs(
